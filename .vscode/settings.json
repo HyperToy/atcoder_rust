@@ -3,5 +3,8 @@
         "atcoder",
         "itertools",
         "proconio"
+    ],
+    "rust-analyzer.linkedProjects": [
+        "./Cargo.toml",
     ]
 }
