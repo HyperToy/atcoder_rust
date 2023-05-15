@@ -1,48 +1,45 @@
+use itertools::Itertools;
 use proconio::*;
 
 fn main() {
     input! {
         n: usize,
         mut k: usize,
-        mut a: [u32; n],
+        mut a: [i32; n],
     }
-    k -= 1;
-    let mut inv = 0;
+    let mut l = 1;
+    let mut r = n * (n + 1) / 2;
     for i in 0..n {
-        for j in 0..i {
+        let mut small = Vec::new();
+        let mut large = Vec::new();
+        for j in i + 1..n {
+            if a[j] < a[i] {
+                small.push(a[j]);
+            }
             if a[j] > a[i] {
-                inv += 1;
+                large.push(a[j]);
             }
         }
-    }
-    if k < inv || inv + n <= k {
-        let (l, r) = rec(&a, 0, k);
-        a[l..r].reverse();
-    }
-    for i in 0..n {
-        print!("{} ", a[i]);
-    }
-    println!();
-}
-
-fn rec(a: &Vec<u32>, offset: usize, k: usize) -> (usize, usize) {
-    let n = a.len() - offset;
-    let middle = n * (n - 1) / 2 + 1;
-
-    let mut vec = Vec::new();
-    let mut smaller = 0;
-    for i in offset + 1..a.len() {
-        vec.push((a[i], i));
-        if a[i] < a[offset] {
-            smaller += 1;
+        let mut x = None;
+        if k - l < small.len() {
+            small.sort();
+            x = Some(small[k - l]);
         }
+        if r - k < large.len() {
+            large.sort();
+            large.reverse();
+            x = Some(large[r - k]);
+        }
+        if let Some(x) = x {
+            let mut j = i;
+            while a[j] != x {
+                j += 1;
+            }
+            a[i..j + 1].reverse();
+            break;
+        }
+        l += small.len();
+        r -= large.len();
     }
-    vec.sort();
-    if k < smaller {
-        return (offset, (vec[k].1) + 1);
-    }
-    if smaller + middle <= k {
-        return (offset, (vec[k - middle].1) + 1);
-    }
-    rec(&a, offset + 1, k - smaller)
+    println!("{}", a.iter().join(" "));
 }
