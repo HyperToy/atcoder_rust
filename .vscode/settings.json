@@ -1,10 +1,12 @@
 {
+    "editor.formatOnSave": true,
     "cSpell.words": [
         "atcoder",
+        "Deque",
         "itertools",
         "proconio"
     ],
     "rust-analyzer.linkedProjects": [
-        "./Cargo.toml",
+        "abc249/Cargo.toml",
     ]
 }
