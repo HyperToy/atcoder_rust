@@ -4,19 +4,40 @@ use std::collections::VecDeque;
 
 const DX: [i32; 6] = [-1, -1, 0, 0, 1, 1];
 const DY: [i32; 6] = [-1, 0, -1, 1, 0, 1];
-// TODO: なぜコンパイルが通ったかわからない。
+
 fn main() {
     input! {
-        n:usize,
-        ps:[(i32, i32); n],
+        n: usize,
+        ps: [(i32, i32); n],
     }
-    let mut ans = 0;
     let mut map = HashMap::new();
     let mut seen = HashMap::new();
-    for i in 0..n {
-        map.insert(ps[i].clone(), 1);
-        seen.insert(ps[i].clone(), false);
+    /*
+     * MEMO: イテレータとタプルのコピーについて
+     *
+     * tuple のそれぞれの型が Copy トレイトを実装しているとき、
+     * その tuple 自身も Copy トレイトを実装していることになる。
+     *  → ムーブが起こらずコピーされる。
+     *
+     * arr: Vec<T> として、 for x in arr の形でループするとき、
+     * arr に対して暗黙的に (implicitly) .into_iter() が呼ばれている。
+     * これは値のムーブを起こしているので、その後参照できない。
+     * .into_iter() : ムーブ
+     * .iter_mut()  : 可変借用
+     * .iter()      : 不変借用
+     *
+     * イテレータに対してコピーしながら処理を行いたいときは、 .copied() をつける。
+     * .iter().copied() : コピー
+     */
+    // for i in 0..n {
+    //     map.insert(ps[i], 1); // copied
+    //     seen.insert(ps[i], false); // copied
+    // }
+    for p in ps.iter().copied() {
+        map.insert(p, 1);
+        seen.insert(p, false);
     }
+    let mut ans = 0;
     for p in ps {
         if Some(&true) == seen.get(&p) {
             continue;
@@ -31,13 +52,8 @@ fn main() {
                 if None == map.get(&tp) {
                     continue;
                 }
-                match seen.get(&tp) {
-                    Some(x) => {
-                        if *x {
-                            continue;
-                        }
-                    }
-                    None => (),
+                if let Some(&true) = seen.get(&tp) {
+                    continue;
                 }
                 seen.insert(tp, true);
                 v.push_back(tp);
