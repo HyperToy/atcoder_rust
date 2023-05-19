@@ -14,28 +14,7 @@ fn main() {
         g[v.0].push(v.1);
         rg[v.1].push(v.0);
     }
-
-    // 帰りがけじゅんの並び
-    let mut vs = Vec::new();
-    // すでに調べたか
-    let mut used = vec![false; n];
-    // 属する強連結成分のトポロジカル順序
-    let mut cmp = vec![0; n];
-
-    for v in 0..n {
-        if !used[v] {
-            dfs(v, &mut used, &g, &mut vs);
-        }
-    }
-    let mut used = vec![false; n];
-    let mut k = 0;
-    for i in (0..vs.len()).rev() {
-        if !used[vs[i]] {
-            rdfs(vs[i], k, &mut used, &mut cmp, &rg);
-            k += 1;
-        }
-    }
-
+    let cmp = scc(&g);
     let mut scs = vec![Vec::new(); n];
     for v in 0..n {
         scs[cmp[v]].push(v);
@@ -45,8 +24,7 @@ fn main() {
     let mut q = VecDeque::new();
     for i in 0..n {
         if scs[i].len() > 1 {
-            // 各頂点をキューにツッコミ、そこから行ける頂点を BFS
-            // ans += scs[i].len();
+            // 各頂点をキューに入れ、そこから行ける頂点を BFS
             for v in scs[i].iter().copied() {
                 if !used[v] {
                     used[v] = true;
@@ -69,6 +47,35 @@ fn main() {
     println!("{}", ans);
 }
 
+fn scc(g: &Vec<Vec<usize>>) -> Vec<usize> {
+    let n = g.len();
+    let mut rg = vec![Vec::new(); n];
+    for u in 0..n {
+        for v in g[u].iter().copied() {
+            rg[v].push(u);
+        }
+    }
+    // 帰りがけ順の並び
+    let mut vs = Vec::new();
+    // すでに調べたか
+    let mut used = vec![false; n];
+    // 属する強連結成分のトポロジカル順序
+    let mut cmp = vec![0; n];
+    for v in 0..n {
+        if !used[v] {
+            dfs(v, &mut used, &g, &mut vs);
+        }
+    }
+    let mut used = vec![false; n];
+    let mut k = 0;
+    for i in (0..vs.len()).rev() {
+        if !used[vs[i]] {
+            rdfs(vs[i], k, &mut used, &mut cmp, &rg);
+            k += 1;
+        }
+    }
+    cmp
+}
 fn dfs(v: usize, used: &mut Vec<bool>, g: &Vec<Vec<usize>>, vs: &mut Vec<usize>) -> () {
     used[v] = true;
     for i in 0..g[v].len() {
@@ -78,7 +85,6 @@ fn dfs(v: usize, used: &mut Vec<bool>, g: &Vec<Vec<usize>>, vs: &mut Vec<usize>)
     }
     vs.push(v)
 }
-
 fn rdfs(
     v: usize,
     k: usize,
