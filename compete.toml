@@ -22,7 +22,15 @@ test-suite = "{{ manifest_dir }}/testcases/{{ bin_alias }}.yml"
 
 [template]
 src = '''
+use proconio::*;
+// use proconio::marker::Chars;
+// use proconio::marker::Bytes;
+// use itertools::Itertools;
+
 fn main() {
+    input! {
+        //
+    }
     todo!();
 }
 '''
@@ -88,7 +96,7 @@ path = "./{{ contest }}"
 
 [test]
 # Toolchain for the test. (optional)
-toolchain = "1.42.0"
+# toolchain = "1.42.0"
 # Profile for `cargo build`. ("dev" | "release")
 #
 # Defaults to `"dev"`.
