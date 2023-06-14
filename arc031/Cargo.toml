@@ -3,6 +3,15 @@ name = "arc031"
 version = "0.1.0"
 edition = "2021"
 
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "arc031-a", problem = "https://atcoder.jp/contests/arc031/<FIXME: screen name of the problem>"}
+b = { name = "arc031-b", problem = "https://atcoder.jp/contests/arc031/<FIXME: screen name of the problem>"}
+c = { name = "arc031-c", problem = "https://atcoder.jp/contests/arc031/<FIXME: screen name of the problem>"}
+d = { name = "arc031-d", problem = "https://atcoder.jp/contests/arc031/<FIXME: screen name of the problem>"}
+
 # dependencies added to new project
 [dependencies]
 proconio = "*"
@@ -10,3 +19,19 @@ proconio = "*"
 [profile.release]
 lto = true
 panic = 'abort'
+
+[[bin]]
+name = "arc031-a"
+path = "./src/bin/a.rs"
+
+[[bin]]
+name = "arc031-b"
+path = "./src/bin/b.rs"
+
+[[bin]]
+name = "arc031-c"
+path = "./src/bin/c.rs"
+
+[[bin]]
+name = "arc031-d"
+path = "./src/bin/d.rs"

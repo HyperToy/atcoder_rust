@@ -3,6 +3,18 @@ name = "keyence2020"
 version = "0.1.0"
 edition = "2021"
 
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "keyence2020-a", problem = "https://atcoder.jp/contests/keyence2020/<FIXME: screen name of the problem>"}
+"a 2" = { name = "keyence2020-a 2", problem = "https://atcoder.jp/contests/keyence2020/<FIXME: screen name of the problem>"}
+b = { name = "keyence2020-b", problem = "https://atcoder.jp/contests/keyence2020/<FIXME: screen name of the problem>"}
+c = { name = "keyence2020-c", problem = "https://atcoder.jp/contests/keyence2020/<FIXME: screen name of the problem>"}
+d = { name = "keyence2020-d", problem = "https://atcoder.jp/contests/keyence2020/<FIXME: screen name of the problem>"}
+e = { name = "keyence2020-e", problem = "https://atcoder.jp/contests/keyence2020/<FIXME: screen name of the problem>"}
+f = { name = "keyence2020-f", problem = "https://atcoder.jp/contests/keyence2020/<FIXME: screen name of the problem>"}
+
 # dependencies added to new project
 [dependencies]
 proconio = "*"
@@ -10,3 +22,31 @@ proconio = "*"
 [profile.release]
 lto = true
 panic = 'abort'
+
+[[bin]]
+name = "keyence2020-a"
+path = "./src/bin/a.rs"
+
+[[bin]]
+name = "keyence2020-a 2"
+path = "./src/bin/a 2.rs"
+
+[[bin]]
+name = "keyence2020-b"
+path = "./src/bin/b.rs"
+
+[[bin]]
+name = "keyence2020-c"
+path = "./src/bin/c.rs"
+
+[[bin]]
+name = "keyence2020-d"
+path = "./src/bin/d.rs"
+
+[[bin]]
+name = "keyence2020-e"
+path = "./src/bin/e.rs"
+
+[[bin]]
+name = "keyence2020-f"
+path = "./src/bin/f.rs"

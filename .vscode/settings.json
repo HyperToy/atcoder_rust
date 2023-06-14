@@ -7,6 +7,6 @@
         "proconio"
     ],
     "rust-analyzer.linkedProjects": [
-        "abc269/Cargo.toml",
+        "abc305/Cargo.toml",
     ]
 }

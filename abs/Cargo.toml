@@ -3,6 +3,22 @@ name = "abs"
 version = "0.1.0"
 edition = "2021"
 
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+abc049c = { name = "abs-abc049c", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
+abc081a = { name = "abs-abc081a", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
+abc081b = { name = "abs-abc081b", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
+abc083b = { name = "abs-abc083b", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
+abc085b = { name = "abs-abc085b", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
+abc085c = { name = "abs-abc085c", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
+abc086a = { name = "abs-abc086a", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
+abc086c = { name = "abs-abc086c", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
+abc087b = { name = "abs-abc087b", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
+abc088b = { name = "abs-abc088b", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
+practicea = { name = "abs-practicea", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
+
 # dependencies added to new project
 [dependencies]
 proconio = "0.4.3"
@@ -10,3 +26,47 @@ proconio = "0.4.3"
 [profile.release]
 lto = true
 panic = 'abort'
+
+[[bin]]
+name = "abs-abc049c"
+path = "./src/bin/abc049c.rs"
+
+[[bin]]
+name = "abs-abc081a"
+path = "./src/bin/abc081a.rs"
+
+[[bin]]
+name = "abs-abc081b"
+path = "./src/bin/abc081b.rs"
+
+[[bin]]
+name = "abs-abc083b"
+path = "./src/bin/abc083b.rs"
+
+[[bin]]
+name = "abs-abc085b"
+path = "./src/bin/abc085b.rs"
+
+[[bin]]
+name = "abs-abc085c"
+path = "./src/bin/abc085c.rs"
+
+[[bin]]
+name = "abs-abc086a"
+path = "./src/bin/abc086a.rs"
+
+[[bin]]
+name = "abs-abc086c"
+path = "./src/bin/abc086c.rs"
+
+[[bin]]
+name = "abs-abc087b"
+path = "./src/bin/abc087b.rs"
+
+[[bin]]
+name = "abs-abc088b"
+path = "./src/bin/abc088b.rs"
+
+[[bin]]
+name = "abs-practicea"
+path = "./src/bin/practicea.rs"

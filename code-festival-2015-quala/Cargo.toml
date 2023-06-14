@@ -3,6 +3,15 @@ name = "code-festival-2015-quala"
 version = "0.1.0"
 edition = "2021"
 
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "code-festival-2015-quala-a", problem = "https://atcoder.jp/contests/code-festival-2015-quala/<FIXME: screen name of the problem>"}
+b = { name = "code-festival-2015-quala-b", problem = "https://atcoder.jp/contests/code-festival-2015-quala/<FIXME: screen name of the problem>"}
+c = { name = "code-festival-2015-quala-c", problem = "https://atcoder.jp/contests/code-festival-2015-quala/<FIXME: screen name of the problem>"}
+d = { name = "code-festival-2015-quala-d", problem = "https://atcoder.jp/contests/code-festival-2015-quala/<FIXME: screen name of the problem>"}
+
 # dependencies added to new project
 [dependencies]
 proconio = "*"
@@ -10,3 +19,19 @@ proconio = "*"
 [profile.release]
 lto = true
 panic = 'abort'
+
+[[bin]]
+name = "code-festival-2015-quala-a"
+path = "./src/bin/a.rs"
+
+[[bin]]
+name = "code-festival-2015-quala-b"
+path = "./src/bin/b.rs"
+
+[[bin]]
+name = "code-festival-2015-quala-c"
+path = "./src/bin/c.rs"
+
+[[bin]]
+name = "code-festival-2015-quala-d"
+path = "./src/bin/d.rs"

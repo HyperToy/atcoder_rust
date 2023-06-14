@@ -3,6 +3,15 @@ name = "abc070"
 version = "0.1.0"
 edition = "2021"
 
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "abc070-a", problem = "https://atcoder.jp/contests/abc070/<FIXME: screen name of the problem>"}
+b = { name = "abc070-b", problem = "https://atcoder.jp/contests/abc070/<FIXME: screen name of the problem>"}
+c = { name = "abc070-c", problem = "https://atcoder.jp/contests/abc070/<FIXME: screen name of the problem>"}
+d = { name = "abc070-d", problem = "https://atcoder.jp/contests/abc070/<FIXME: screen name of the problem>"}
+
 # dependencies added to new project
 [dependencies]
 proconio = "0.4.3"
@@ -10,3 +19,19 @@ proconio = "0.4.3"
 [profile.release]
 lto = true
 panic = 'abort'
+
+[[bin]]
+name = "abc070-a"
+path = "./src/bin/a.rs"
+
+[[bin]]
+name = "abc070-b"
+path = "./src/bin/b.rs"
+
+[[bin]]
+name = "abc070-c"
+path = "./src/bin/c.rs"
+
+[[bin]]
+name = "abc070-d"
+path = "./src/bin/d.rs"

@@ -3,6 +3,17 @@ name = "aising2019"
 version = "0.1.0"
 edition = "2021"
 
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "aising2019-a", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>"}
+b = { name = "aising2019-b", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>"}
+"b 2" = { name = "aising2019-b 2", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>"}
+c = { name = "aising2019-c", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>"}
+d = { name = "aising2019-d", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>"}
+e = { name = "aising2019-e", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>"}
+
 # dependencies added to new project
 [dependencies]
 proconio = "*"
@@ -10,3 +21,27 @@ proconio = "*"
 [profile.release]
 lto = true
 panic = 'abort'
+
+[[bin]]
+name = "aising2019-a"
+path = "./src/bin/a.rs"
+
+[[bin]]
+name = "aising2019-b"
+path = "./src/bin/b.rs"
+
+[[bin]]
+name = "aising2019-b 2"
+path = "./src/bin/b 2.rs"
+
+[[bin]]
+name = "aising2019-c"
+path = "./src/bin/c.rs"
+
+[[bin]]
+name = "aising2019-d"
+path = "./src/bin/d.rs"
+
+[[bin]]
+name = "aising2019-e"
+path = "./src/bin/e.rs"

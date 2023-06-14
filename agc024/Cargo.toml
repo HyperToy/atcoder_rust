@@ -3,6 +3,17 @@ name = "agc024"
 version = "0.1.0"
 edition = "2021"
 
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "agc024-a", problem = "https://atcoder.jp/contests/agc024/<FIXME: screen name of the problem>"}
+b = { name = "agc024-b", problem = "https://atcoder.jp/contests/agc024/<FIXME: screen name of the problem>"}
+c = { name = "agc024-c", problem = "https://atcoder.jp/contests/agc024/<FIXME: screen name of the problem>"}
+d = { name = "agc024-d", problem = "https://atcoder.jp/contests/agc024/<FIXME: screen name of the problem>"}
+e = { name = "agc024-e", problem = "https://atcoder.jp/contests/agc024/<FIXME: screen name of the problem>"}
+f = { name = "agc024-f", problem = "https://atcoder.jp/contests/agc024/<FIXME: screen name of the problem>"}
+
 # dependencies added to new project
 [dependencies]
 proconio = "*"
@@ -10,3 +21,27 @@ proconio = "*"
 [profile.release]
 lto = true
 panic = 'abort'
+
+[[bin]]
+name = "agc024-a"
+path = "./src/bin/a.rs"
+
+[[bin]]
+name = "agc024-b"
+path = "./src/bin/b.rs"
+
+[[bin]]
+name = "agc024-c"
+path = "./src/bin/c.rs"
+
+[[bin]]
+name = "agc024-d"
+path = "./src/bin/d.rs"
+
+[[bin]]
+name = "agc024-e"
+path = "./src/bin/e.rs"
+
+[[bin]]
+name = "agc024-f"
+path = "./src/bin/f.rs"

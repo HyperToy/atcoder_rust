@@ -3,5 +3,5 @@ use proconio::*;
 
 fn main() {
     input! {}
-    unimplemented!();
+    todo!();
 }

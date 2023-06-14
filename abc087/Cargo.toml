@@ -3,6 +3,16 @@ name = "abc087"
 version = "0.1.0"
 edition = "2021"
 
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "abc087-a", problem = "https://atcoder.jp/contests/abc087/<FIXME: screen name of the problem>"}
+"a 2" = { name = "abc087-a 2", problem = "https://atcoder.jp/contests/abc087/<FIXME: screen name of the problem>"}
+b = { name = "abc087-b", problem = "https://atcoder.jp/contests/abc087/<FIXME: screen name of the problem>"}
+c = { name = "abc087-c", problem = "https://atcoder.jp/contests/abc087/<FIXME: screen name of the problem>"}
+d = { name = "abc087-d", problem = "https://atcoder.jp/contests/abc087/<FIXME: screen name of the problem>"}
+
 # dependencies added to new project
 [dependencies]
 proconio = "*"
@@ -10,3 +20,23 @@ proconio = "*"
 [profile.release]
 lto = true
 panic = 'abort'
+
+[[bin]]
+name = "abc087-a"
+path = "./src/bin/a.rs"
+
+[[bin]]
+name = "abc087-a 2"
+path = "./src/bin/a 2.rs"
+
+[[bin]]
+name = "abc087-b"
+path = "./src/bin/b.rs"
+
+[[bin]]
+name = "abc087-c"
+path = "./src/bin/c.rs"
+
+[[bin]]
+name = "abc087-d"
+path = "./src/bin/d.rs"
