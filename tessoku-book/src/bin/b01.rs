@@ -1,9 +1,8 @@
 use proconio::*;
-// use itertools::Itertools;
 
 fn main() {
     input! {
-        //
+        a: i32, b: i32,
     }
-    todo!();
+    println!("{}", a + b);
 }
