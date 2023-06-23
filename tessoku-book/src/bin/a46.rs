@@ -7,37 +7,59 @@ fn main() {
     let state = generate_initial_solution(&input);
 
     // output
-    let output = Output::new(state.clone(), &input);
+    let output = Output::new(state.city_order.clone(), &input);
     println!("{}", output);
+    eprintln!("cost: {}", state.calc_cost(&input));
 }
 
-fn generate_initial_solution(input: &Input) -> Vec<usize> {
+fn generate_initial_solution(input: &Input) -> State {
     // 常に「一番近い都市」に向かう貪欲
-    let mut state = vec![0];
+    let mut city_order = Vec::new();
     let mut seen = vec![false; input.city_count];
-    seen[0] = true;
-    let mut pre_idx = 1;
+    let start_city = 0;
+    city_order.push(start_city);
+    seen[start_city] = true;
+    let mut now_city = start_city;
     for _ in 1..input.city_count {
-        let pre_point = input.cities[pre_idx];
-        let mut next_idx = 0;
+        let pre_point = input.cities[now_city];
+        let mut next_city = 0;
         let mut min_sq_dist = std::i32::MAX;
-        for i in 1..input.city_count {
+        for i in 0..input.city_count {
             if seen[i] {
                 continue;
             }
             let next_point = input.cities[i];
-            let now_sq_dist = pre_point.calc_sq_dist(&next_point);
-            if now_sq_dist < min_sq_dist {
-                min_sq_dist = now_sq_dist;
-                next_idx = i;
+            let sq_dist = pre_point.calc_sq_dist(&next_point);
+            if sq_dist < min_sq_dist {
+                min_sq_dist = sq_dist;
+                next_city = i;
             }
         }
-        state.push(next_idx);
-        seen[next_idx] = true;
-        pre_idx = next_idx;
+        city_order.push(next_city);
+        seen[next_city] = true;
+        now_city = next_city;
     }
-    state.push(0);
-    state
+    city_order.push(start_city);
+    State::new(city_order)
+}
+
+#[derive(Debug, Clone)]
+struct State {
+    city_order: Vec<usize>,
+}
+impl State {
+    fn new(city_order: Vec<usize>) -> Self {
+        let state = Self { city_order };
+        state
+    }
+    fn calc_cost(&self, input: &Input) -> i64 {
+        let mut cost = 0;
+        for i in 0..input.city_count {
+            cost += input.cities[self.city_order[i]]
+                .calc_sq_dist(&input.cities[self.city_order[i + 1]]);
+        }
+        cost.into()
+    }
 }
 
 mod lib {
@@ -60,6 +82,7 @@ mod lib {
             cities: cities.iter().map(|&(x, y)| Point::new(x, y)).collect(),
         }
     }
+
     #[derive(Clone, Debug)]
     pub struct Output<'a> {
         pub city_order: Vec<usize>,
@@ -81,7 +104,6 @@ mod lib {
         }
         */
     }
-
     impl<'a> Display for Output<'a> {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             write!(
