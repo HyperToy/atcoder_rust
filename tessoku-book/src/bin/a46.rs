@@ -9,7 +9,7 @@ fn main() {
     // output
     let output = Output::new(state.city_order.clone(), &input);
     println!("{}", output);
-    eprintln!("cost: {}", state.calc_cost(&input));
+    eprintln!("cost: {:.0}", state.calc_cost(&input));
 }
 
 fn generate_initial_solution(input: &Input) -> State {
@@ -52,11 +52,12 @@ impl State {
         let state = Self { city_order };
         state
     }
-    fn calc_cost(&self, input: &Input) -> i64 {
-        let mut cost = 0;
+    fn calc_cost(&self, input: &Input) -> f64 {
+        let mut cost = 0.;
         for i in 0..input.city_count {
-            cost += input.cities[self.city_order[i]]
+            let sq_dist = input.cities[self.city_order[i]]
                 .calc_sq_dist(&input.cities[self.city_order[i + 1]]);
+            cost += (sq_dist as f64).sqrt();
         }
         cost.into()
     }
