@@ -1,15 +1,16 @@
-use lib::{parse_input, Input, Output};
+use lib::{parse_input, ChangeMinMax, Input, Output};
+use rand::Rng;
 
 fn main() {
     // input
     let input = parse_input();
 
     let state = generate_initial_solution(&input);
+    let state = annealing(&input, state, 0.9, 3e6, 3e5);
 
     // output
     let output = Output::new(state.city_order.clone(), &input);
     println!("{}", output);
-    eprintln!("cost: {:.0}", state.calc_cost(&input));
 }
 
 fn generate_initial_solution(input: &Input) -> State {
@@ -43,6 +44,83 @@ fn generate_initial_solution(input: &Input) -> State {
     State::new(city_order)
 }
 
+fn annealing(
+    input: &Input,
+    initial_solution: State,
+    duration: f64,
+    temp0: f64,
+    temp1: f64,
+) -> State {
+    let mut solution = initial_solution;
+    let mut best_solution = solution.clone();
+    let mut current_cost = solution.calc_cost(&input);
+    let mut best_cost = current_cost;
+    let init_cost = current_cost;
+
+    let mut all_iter = 0;
+    let mut valid_iter = 0;
+    let mut accepted_count = 0;
+    let mut update_count = 0;
+    let mut rng = rand::thread_rng();
+
+    let duration_inv = 1.0 / duration;
+    let since = std::time::Instant::now();
+
+    let mut inv_temp = 1.0 / temp0; // 温度の逆数
+    let mut time = 0.0;
+
+    loop {
+        all_iter += 1;
+        if (all_iter & ((1 << 10) - 1)) == 0 {
+            time = (std::time::Instant::now() - since).as_secs_f64() * duration_inv;
+            let temp = f64::powf(temp0, 1.0 - time) * f64::powf(temp1, time);
+            inv_temp = 1.0 / temp;
+
+            if time >= 1.0 {
+                break;
+            }
+        }
+        let l: usize = rng.gen_range(1, input.city_count);
+        let r: usize = rng.gen_range(l, input.city_count);
+
+        let current_cost_partial = input.cities[solution.city_order[l]]
+            .calc_sq_dist(&input.cities[solution.city_order[l - 1]])
+            + input.cities[solution.city_order[r]]
+                .calc_sq_dist(&input.cities[solution.city_order[r + 1]]);
+        let new_cost_partial = input.cities[solution.city_order[l]]
+            .calc_sq_dist(&input.cities[solution.city_order[r + 1]])
+            + input.cities[solution.city_order[r]]
+                .calc_sq_dist(&input.cities[solution.city_order[l - 1]]);
+
+        // 増加するコスト。
+        let cost_diff = new_cost_partial - current_cost_partial;
+
+        if cost_diff <= 0 || rng.gen_bool(f64::exp(-cost_diff as f64 * inv_temp)) {
+            solution.reverse_range(l, r);
+            // 解の更新
+            current_cost = solution.calc_cost(&input);
+            accepted_count += 1;
+
+            if best_cost.change_min(current_cost) {
+                best_solution = solution.clone();
+                update_count += 1;
+            }
+        }
+        valid_iter += 1;
+    }
+
+    eprintln!("===== annealing =====");
+    eprintln!("init cost  : {:.2}", init_cost);
+    eprintln!("cost       : {:.2}", best_cost);
+    eprintln!("all iter   : {}", all_iter);
+    eprintln!("valid iter : {}", valid_iter);
+    eprintln!("accepted   : {}", accepted_count);
+    eprintln!("updated    : {}", update_count);
+    eprintln!("");
+
+    best_solution
+}
+
 #[derive(Debug, Clone)]
 struct State {
     city_order: Vec<usize>,
@@ -61,12 +139,41 @@ impl State {
         }
         cost.into()
     }
+    fn reverse_range(&mut self, mut l: usize, mut r: usize) {
+        while l < r {
+            let tmp = self.city_order[l];
+            self.city_order[l] = self.city_order[r];
+            self.city_order[r] = tmp;
+            l += 1;
+            r -= 1;
+        }
+    }
 }
 
 mod lib {
     use itertools::Itertools;
     use proconio::input;
     use std::fmt::Display;
+
+    pub trait ChangeMinMax {
+        fn change_min(&mut self, v: Self) -> bool;
+        fn change_max(&mut self, v: Self) -> bool;
+    }
+
+    impl<T: PartialOrd> ChangeMinMax for T {
+        fn change_min(&mut self, v: T) -> bool {
+            *self > v && {
+                *self = v;
+                true
+            }
+        }
+        fn change_max(&mut self, v: T) -> bool {
+            *self < v && {
+                *self = v;
+                true
+            }
+        }
+    }
 
     #[derive(Clone, Debug)]
     pub struct Input {
