@@ -6,7 +6,11 @@ fn main() {
         n: usize,
         a: [i32; n],
     }
+    let compressed = compress(&a);
+    println!("{}", compressed.iter().map(|x| x + 1).join(" "));
+}
 
+fn compress(a: &Vec<i32>) -> Vec<usize> {
     let mut v = a.clone();
     v.sort();
     v.dedup();
@@ -22,13 +26,12 @@ fn main() {
                 ng = wj;
             }
         }
-        ok + 1
+        ok
     };
 
     let mut compressed = Vec::new();
-    for i in 0..n {
+    for i in 0..a.len() {
         compressed.push(get_order(a[i]));
     }
-
-    println!("{}", compressed.iter().join(" "));
+    compressed
 }
