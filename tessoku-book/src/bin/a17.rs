@@ -17,11 +17,10 @@ fn main() {
             dp[i] = dp[i].min(dp[i - 2] + b[i - 2]);
         }
     }
-
     let mut answer = Vec::new();
     let mut place = n - 1;
     loop {
-        answer.push(place + 1);
+        answer.push(place);
         if place == 0 {
             break;
         }
@@ -33,5 +32,5 @@ fn main() {
     }
     answer.reverse();
     println!("{}", answer.len());
-    println!("{}", answer.iter().join(" "));
+    println!("{}", answer.iter().map(|x| x + 1).join(" "));
 }
