@@ -8,7 +8,7 @@ fn main() {
     }
     let mut max = -1;
     let mut cnt = 0;
-    let mut kushi = false;
+    let mut skewer = false;
     for i in 0..n {
         if s[i] == 'o' {
             cnt += 1;
@@ -17,11 +17,11 @@ fn main() {
                 max = cnt;
             }
             cnt = 0;
-            kushi = true;
+            skewer = true;
         }
     }
     if cnt > max {
         max = cnt;
     }
-    println!("{}", if kushi && max > 0 { max } else { -1 });
+    println!("{}", if skewer && max > 0 { max } else { -1 });
 }
