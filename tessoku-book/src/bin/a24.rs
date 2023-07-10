@@ -8,14 +8,18 @@ fn main() {
     println!("{}", longest_increasing_subsequence(&a));
 }
 
-fn longest_increasing_subsequence(a: &Vec<usize>) -> usize {
+fn longest_increasing_subsequence<T: Ord + Copy>(a: &Vec<T>) -> usize {
     let n = a.len();
-    let mut lis = vec![1_000_000; n];
+    let mut lis = Vec::new();
     for i in 0..n {
         let pos = lis.lower_bound(&a[i]);
-        lis[pos] = a[i];
+        if pos < lis.len() {
+            lis[pos] = a[i];
+        } else {
+            lis.push(a[i]);
+        }
     }
-    lis.lower_bound(&1_000_000)
+    lis.len()
 }
 
 use std::cmp::Ordering;
