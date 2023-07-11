@@ -24,7 +24,7 @@ fn longest_increasing_subsequence<T: Ord + Copy>(a: &Vec<T>) -> usize {
 
 use std::cmp::Ordering;
 
-/// Equivalent to std::lowerbound and std::upperbound in c++
+/// Equivalent to std::lower_bound and std::upper_bound in c++
 pub trait BinarySearch<T> {
     fn lower_bound(&self, x: &T) -> usize;
     fn upper_bound(&self, x: &T) -> usize;

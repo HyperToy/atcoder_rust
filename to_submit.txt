@@ -1,0 +1,2 @@
+cargo compete s b36
+cargo compete s a37
