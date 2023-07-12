@@ -1,4 +1,11 @@
 cargo compete s a41
+cargo compete s a42
+cargo compete s a43
 
 cargo compete s b36
 cargo compete s b37
+cargo compete s b38
+cargo compete s b40
+cargo compete s b41
+cargo compete s b42
+cargo compete s b43
