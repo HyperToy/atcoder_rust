@@ -1,7 +1,4 @@
-cargo compete s a44
-cargo compete s a51
-cargo compete s a52
-cargo compete s a53
+cargo compete s a45
 
 cargo compete s b37
 cargo compete s b38
