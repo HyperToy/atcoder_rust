@@ -2,18 +2,15 @@ cargo compete s a45
 cargo compete s a55
 cargo compete s a56
 cargo compete s a57
+cargo compete s a58
+cargo compete s a59
 
-cargo compete s b37
-cargo compete s b38
-cargo compete s b40
-cargo compete s b41
-cargo compete s b42
-cargo compete s b43
-cargo compete s b44
-cargo compete s b45
 cargo compete s b51
 cargo compete s b52
 cargo compete s b54
 cargo compete s b55
 cargo compete s b56
 cargo compete s b57 # 余計な処理が多そう
+
+cargo compete s c01
+cargo compete s c02
