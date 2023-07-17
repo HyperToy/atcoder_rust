@@ -21,8 +21,16 @@ fn main() {
     for i in 1..n {
         pow27[i] = pow27[i - 1] * 27 % modulo;
     }
-    let convert =
-        |l, r| (hash[r] - if l > 0 { hash[l - 1] } else { 0 } * pow27[r - l + 1] + modulo) % modulo;
+    let convert = |l, r| {
+        (hash[r]
+            - if l > 0 {
+                hash[l - 1] * pow27[r - l + 1] % modulo
+            } else {
+                0
+            }
+            + modulo)
+            % modulo
+    };
     for ((a, b), (c, d)) in qs {
         println!(
             "{}",

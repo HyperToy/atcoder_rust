@@ -1,8 +1,3 @@
-cargo compete s a45
-cargo compete s a55
-cargo compete s a56
-cargo compete s a57
-cargo compete s a58
 cargo compete s a59
 
 cargo compete s b51
