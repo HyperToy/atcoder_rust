@@ -1,9 +1,5 @@
 cargo compete s a59
 
-cargo compete s b51
-cargo compete s b52
-cargo compete s b54
-cargo compete s b55
 cargo compete s b56
 cargo compete s b57 # 余計な処理が多そう
 

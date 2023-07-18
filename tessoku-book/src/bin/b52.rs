@@ -7,7 +7,7 @@ use std::collections::VecDeque;
 
 fn main() {
     input! {
-        _n: usize, x: Usize1,
+        n: usize, x: Usize1,
         mut a: Chars,
     }
     let mut queue = VecDeque::new();
@@ -15,11 +15,11 @@ fn main() {
     a[x] = '@';
     while queue.len() > 0 {
         let pos = queue.pop_front().unwrap();
-        if a[pos - 1] == '.' {
+        if pos > 0 && a[pos - 1] == '.' {
             queue.push_back(pos - 1);
             a[pos - 1] = '@';
         }
-        if a[pos + 1] == '.' {
+        if pos < n - 1 && a[pos + 1] == '.' {
             queue.push_back(pos + 1);
             a[pos + 1] = '@';
         }
