@@ -1,5 +1,6 @@
 use proconio::*;
 
+// refactor doubling
 fn main() {
     input! {
         n: usize, k: usize,

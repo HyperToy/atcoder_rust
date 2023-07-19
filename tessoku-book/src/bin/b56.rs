@@ -21,15 +21,30 @@ fn main() {
     for i in 0..n {
         hash[i] = (b[i] as i64 + if i > 0 { hash[i - 1] * 27 } else { 0 }) % modulo;
     }
-    let convert =
-        |l, r| (hash[r] - if l > 0 { hash[l - 1] } else { 0 } * pow27[r - l + 1] + modulo) % modulo;
+    let convert = |l, r| {
+        (hash[r]
+            - if l > 0 {
+                hash[l - 1] * pow27[r - l + 1] % modulo
+            } else {
+                0
+            }
+            + modulo)
+            % modulo
+    };
 
     let mut r_hash = vec![0; n];
     for i in (0..n).rev() {
         r_hash[i] = (b[i] as i64 + if i < n - 1 { r_hash[i + 1] * 27 } else { 0 }) % modulo;
     }
     let reverse_convert = |l, r| {
-        (r_hash[l] - if r < n - 1 { r_hash[r + 1] } else { 0 } * pow27[r - l + 1] + modulo) % modulo
+        (r_hash[l]
+            - if r < n - 1 {
+                r_hash[r + 1] * pow27[r - l + 1] % modulo
+            } else {
+                0
+            }
+            + modulo)
+            % modulo
     };
 
     for (l, r) in qs {

@@ -7,14 +7,16 @@ fn main() {
     }
     let mut stack: Vec<(usize, usize)> = Vec::new();
     for i in 0..n {
-        if stack.is_empty() {
-            println!("{}", -1);
-        } else {
-            while stack.last().unwrap().1 < a[i] {
-                stack.pop();
-            }
-            println!("{}", stack.last().unwrap().0);
+        while !stack.is_empty() && stack.last().unwrap().1 < a[i] {
+            stack.pop();
         }
+        println!(
+            "{}",
+            match stack.last() {
+                None => -1,
+                Some(x) => x.0 as isize,
+            }
+        );
         stack.push((i + 1, a[i]));
     }
 }
