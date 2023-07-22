@@ -10,6 +10,7 @@
     ],
     "rust-analyzer.linkedProjects": [
         "tessoku-book/Cargo.toml",
+        "./abc297/Cargo.toml",
         "./abc299/Cargo.toml",
         "./abc309/Cargo.toml",
     ]
