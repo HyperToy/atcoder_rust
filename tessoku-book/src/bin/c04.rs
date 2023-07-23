@@ -1,9 +1,19 @@
+use itertools::Itertools;
 use proconio::*;
-// use itertools::Itertools;
 
 fn main() {
     input! {
-        //
+        n: u64,
     }
-    todo!();
+    let mut divisors = Vec::new();
+    let mut x = 1;
+    while x * x <= n {
+        if n % x == 0 {
+            divisors.push(x);
+            divisors.push(n / x);
+        }
+        x += 1;
+    }
+    divisors.sort();
+    println!("{}", divisors.iter().join(" "));
 }

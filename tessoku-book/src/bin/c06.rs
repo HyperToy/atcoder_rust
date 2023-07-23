@@ -1,9 +1,15 @@
+use itertools::Itertools;
 use proconio::*;
-// use itertools::Itertools;
 
 fn main() {
     input! {
-        //
+        n: usize,
     }
-    todo!();
+    println!("{}", n);
+    println!(
+        "{}",
+        (0..n)
+            .map(|x| format!("{} {}", x + 1, (x + 1) % n + 1))
+            .join(" ")
+    );
 }
