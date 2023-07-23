@@ -8,6 +8,10 @@
         "proconio",
         "tessoku"
     ],
+    "audioCues.lineHasError": "off",
+    "audioCues.diffLineModified": "off",
+    "audioCues.diffLineInserted": "off",
+    "audioCues.diffLineDeleted": "off",
     "rust-analyzer.linkedProjects": [
         "tessoku-book/Cargo.toml",
         "./abc297/Cargo.toml",
