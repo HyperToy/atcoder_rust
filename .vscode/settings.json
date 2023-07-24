@@ -17,5 +17,6 @@
         "./abc297/Cargo.toml",
         "./abc299/Cargo.toml",
         "./abc309/Cargo.toml",
+        "./abc311/Cargo.toml",
     ]
 }
