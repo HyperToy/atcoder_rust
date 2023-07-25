@@ -1,0 +1,42 @@
+[package]
+name = "joi2008yo"
+version = "0.1.0"
+edition = "2018"
+
+[package.metadata.cargo-compete.bin]
+joi2008yo-a = { alias = "a", problem = "https://atcoder.jp/contests/joi2008yo/tasks/joi2008yo_a" }
+joi2008yo-b = { alias = "b", problem = "https://atcoder.jp/contests/joi2008yo/tasks/joi2008yo_b" }
+joi2008yo-c = { alias = "c", problem = "https://atcoder.jp/contests/joi2008yo/tasks/joi2008yo_c" }
+joi2008yo-d = { alias = "d", problem = "https://atcoder.jp/contests/joi2008yo/tasks/joi2008yo_d" }
+joi2008yo-e = { alias = "e", problem = "https://atcoder.jp/contests/joi2008yo/tasks/joi2008yo_e" }
+joi2008yo-f = { alias = "f", problem = "https://atcoder.jp/contests/joi2008yo/tasks/joi2008yo_f" }
+
+[[bin]]
+name = "joi2008yo-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "joi2008yo-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "joi2008yo-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "joi2008yo-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "joi2008yo-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "joi2008yo-f"
+path = "src/bin/f.rs"
+
+[dependencies]
+proconio = "=0.4.3"
+itertools = "=0.9.0"
+
+[dev-dependencies]
