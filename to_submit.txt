@@ -2,6 +2,8 @@ cargo compete s a66
 cargo compete s a67
 cargo compete s a68
 cargo compete s a69
+cargo compete s a70
+cargo compete s a71
 
 cargo compete s c04
 cargo compete s c05
