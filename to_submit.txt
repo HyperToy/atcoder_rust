@@ -1,11 +1,7 @@
 cargo compete s a68
 cargo compete s a69
-cargo compete s a70
-cargo compete s a71
-cargo compete s a73
 cargo compete s a74
 cargo compete s a75
 
-cargo compete s c05
 cargo compete s --no-test c06
 cargo compete s c07

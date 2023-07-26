@@ -13,7 +13,7 @@ fn main() {
     }
     let ops = ops
         .iter()
-        .map(|(x, y, z)| (1 << x) | (1 << y) | (1 << z))
+        .map(|(x, y, z)| (1usize << x) | (1usize << y) | (1usize << z))
         .collect::<Vec<usize>>();
     let mut g = vec![Vec::new(); 1 << n];
     for i in 0..(1 << n) {
