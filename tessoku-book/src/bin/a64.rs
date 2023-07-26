@@ -12,6 +12,7 @@ fn main() {
         g[v].push((u, w));
     }
 
+    // dijkstra
     let mut dist = vec![std::i32::MAX; n];
     let mut queue = BinaryHeap::new();
     let start = 0;
