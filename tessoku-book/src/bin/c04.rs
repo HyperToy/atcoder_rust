@@ -10,7 +10,9 @@ fn main() {
     while x * x <= n {
         if n % x == 0 {
             divisors.push(x);
-            divisors.push(n / x);
+            if x != n / x {
+                divisors.push(n / x);
+            }
         }
         x += 1;
     }

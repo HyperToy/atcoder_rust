@@ -17,6 +17,7 @@ fn main() {
     dp[0] = 1;
     sum[0] = 1;
     for i in 1..=n + 1 {
+        // refactor
         // p[i] - r <= p[x] を満たす最小の x を求める
         let mut ng: isize = -1;
         let mut ok: isize = n as isize + 1;
@@ -51,7 +52,6 @@ fn main() {
             }
             + modulo)
             % modulo;
-        eprintln!("{} {} {}", i, pos_l, pos_r);
         sum[i] = (sum[i - 1] + dp[i]) % modulo;
     }
 
