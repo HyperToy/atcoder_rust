@@ -1,6 +1,5 @@
 use proconio::{marker::Chars, *};
 
-// todo
 fn main() {
     input! {
         n: usize,
@@ -47,7 +46,7 @@ impl MaximumFlow {
         });
         self.g[v].push(Edge {
             to: u,
-            cap,
+            cap: 0,
             rev: current_u,
         });
     }
