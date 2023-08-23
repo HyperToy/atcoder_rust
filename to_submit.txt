@@ -1,2 +1,0 @@
-cargo compete s a74
-cargo compete s a75
