@@ -1,26 +1,33 @@
 use itertools::Itertools;
 use proconio::*;
-use std::collections::BinaryHeap;
 
-// TLE
 fn main() {
     input! {
-        n: usize, k: usize,
-        a: [i64; n],
+        n: usize, k: f64,
+        a: [f64; n],
     }
-    let mut q = BinaryHeap::new();
+    let mut ng = 1.;
+    let mut ok = 1_000_000_000.;
+    while ng + 0.000001 < ok {
+        let wj = (ng + ok) / 2.;
+        let mut count = 0.;
+        for x in a.clone() {
+            count += (x / wj).floor();
+        }
+        if count <= k {
+            ok = wj;
+        } else {
+            ng = wj;
+        }
+    }
+    let mut answer = vec![0.; n];
     for i in 0..n {
-        q.push((Rational::new(a[i], 1), i));
-    }
-    let mut answer = vec![0; n];
-    for _ in 0..k {
-        let v = q.pop().unwrap();
-        answer[v.1] += 1;
-        q.push((Rational::new(v.0.number, v.0.demon + 1), v.1));
+        answer[i] = (a[i] / ok).floor();
     }
     println!("{}", answer.iter().join(" "));
 }
 
+/*
 #[derive(PartialEq, Eq)]
 struct Rational {
     number: i64,
@@ -41,3 +48,4 @@ impl Rational {
         Self { number, demon }
     }
 }
+ */
