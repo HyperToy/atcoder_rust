@@ -3,63 +3,86 @@ use proconio::{marker::Usize1, *};
 fn main() {
     input! {
         n: usize, m: usize, k: i32,
-        mut flights: [(Usize1, i32, Usize1, i32); m],
+        flights: [(Usize1, i32, Usize1, i32); m],
     }
-    for i in 0..m {
-        flights[i].3 += k;
-    }
+    let flights = flights
+        .into_iter()
+        .enumerate()
+        .map(|(index, (dep_port, dep_time, arr_port, arr_time))| Flight {
+            dep_port,
+            dep_time,
+            arr_port,
+            arr_time: arr_time + k,
+            flight_id: index,
+        })
+        .collect::<Vec<_>>();
 
-    // (時刻, 路線番号または空港番号, 出発か到着か)
-    // 2: 出発, 1: 到着, 0: 最初と最後
-    // ここで、出発の方が番号が大きい理由は、同じ時刻のときに到着をより早くするため
     let mut list = Vec::new();
-    for i in 0..m {
-        list.push((flights[i].1, i, 2)); // 出発
-        list.push((flights[i].3, i, 1)); // 到着
+    for flight in flights.clone() {
+        list.push(FlightElement {
+            time: flight.dep_time,
+            kind: FlightKind::DEPARTURE(flight.flight_id),
+            airport_id: flight.dep_port,
+        }); // 出発
+        list.push(FlightElement {
+            time: flight.arr_time,
+            kind: FlightKind::ARRIVAL(flight.flight_id),
+            airport_id: flight.arr_port,
+        }); // 到着
     }
-    for i in 0..n {
-        list.push((-1, i, 0)); // 各空港 (始点)
-        list.push((2_000_000_100, i, 0)); // 各空港 (終着)
+    for airport_id in 0..n {
+        list.push(FlightElement {
+            time: -1,
+            kind: FlightKind::AIRPORT,
+            airport_id,
+        }); // 各空港 (始点)
+        list.push(FlightElement {
+            time: 2_000_000_100,
+            kind: FlightKind::AIRPORT,
+            airport_id,
+        }); // 各空港 (終着)
     }
+    list.push(FlightElement {
+        time: -2,
+        kind: FlightKind::OTHER,
+        airport_id: n,
+    });
+    list.push(FlightElement {
+        time: 2_000_000_101,
+        kind: FlightKind::OTHER,
+        airport_id: n,
+    });
     list.sort();
 
     // 頂点番号の情報
     // 路線index -> そいつが list のどの index にいるか
     let mut vert_s = vec![0; m]; // 路線i の到着
     let mut vert_t = vec![0; m]; // 路線i の出発
-    for i in 0..list.len() {
-        match list[i].2 {
-            2 => {
-                vert_s[list[i].1] = i;
+    for (node_id, flight) in list.clone().into_iter().enumerate() {
+        match flight.kind {
+            FlightKind::DEPARTURE(flight_id) => {
+                vert_s[flight_id] = node_id;
             }
-            1 => {
-                vert_t[list[i].1] = i;
+            FlightKind::ARRIVAL(flight_id) => {
+                vert_t[flight_id] = node_id;
             }
             _ => {}
         }
     }
 
     // それぞれの空港が，どの頂点番号を使うか
-    let mut airport = vec![Vec::new(); n];
-    for i in 0..list.len() {
-        match list[i].2 {
-            0 => {
-                airport[list[i].1].push(i + 1);
-            }
-            1 => {
-                airport[flights[list[i].1].2].push(i + 1);
-            }
-            2 => {
-                airport[flights[list[i].1].0].push(i + 1);
-            }
-            _ => {}
-        }
+    let mut airport = vec![Vec::new(); n + 1];
+    for (node_id, flight_element) in list.clone().into_iter().enumerate() {
+        airport[flight_element.airport_id].push(node_id);
     }
 
+    // グラフを作る
     let l = 2 * (n + m + 1);
+    let source = 0;
+    let target = l - 1;
     let mut g = vec![Vec::new(); l];
-    for i in 0..m {
-        g[vert_t[i] + 1].push((vert_s[i] + 1, 1));
+    for flight_id in 0..m {
+        g[vert_t[flight_id]].push((vert_s[flight_id], 1));
     }
     for i in 0..n {
         for j in 1..airport[i].len() {
@@ -68,9 +91,9 @@ fn main() {
             g[v].push((u, 0));
         }
     }
-    for i in 0..n {
-        g[airport[i][0]].push((0, 0));
-        g[l - 1].push((airport[i][airport[i].len() - 1], 0));
+    for airport_id in 0..n {
+        g[airport_id + 1].push((source, 0));
+        g[target].push((*airport[airport_id].last().unwrap(), 0));
     }
 
     let mut dp = vec![0; l];
@@ -79,5 +102,52 @@ fn main() {
             dp[i] = dp[i].max(dp[u] + score);
         }
     }
-    println!("{}", dp[l - 1]);
+    println!("{}", dp.last().unwrap());
+}
+
+#[derive(Clone)]
+struct Flight {
+    dep_port: usize,
+    dep_time: i32,
+    arr_port: usize,
+    arr_time: i32,
+    flight_id: usize,
+}
+
+#[derive(PartialEq, Eq, PartialOrd, Ord, Clone, Debug)]
+struct FlightElement {
+    time: i32,
+    kind: FlightKind,
+    airport_id: usize,
+}
+
+#[derive(PartialEq, Eq, PartialOrd, Clone, Debug)]
+enum FlightKind {
+    AIRPORT,
+    DEPARTURE(usize),
+    ARRIVAL(usize),
+    OTHER,
+}
+
+use std::cmp::Ordering;
+impl Ord for FlightKind {
+    fn cmp(&self, other: &Self) -> Ordering {
+        use FlightKind::*;
+        match (self, other) {
+            (AIRPORT, AIRPORT) => Ordering::Equal,
+            (ARRIVAL(_), ARRIVAL(_)) => Ordering::Equal,
+            (DEPARTURE(_), DEPARTURE(_)) => Ordering::Equal,
+            (OTHER, OTHER) => Ordering::Equal,
+            (OTHER, _) => Ordering::Less,
+            (AIRPORT, _) => Ordering::Less,
+            (DEPARTURE(_), _) => Ordering::Greater,
+            (ARRIVAL(_), _) => {
+                if other == &AIRPORT {
+                    Ordering::Greater
+                } else {
+                    Ordering::Less
+                }
+            }
+        }
+    }
 }
