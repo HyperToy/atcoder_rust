@@ -1,153 +1,104 @@
-use proconio::{marker::Usize1, *};
+use proconio::*;
 
+#[allow(non_snake_case)]
 fn main() {
+    // 入力部分
     input! {
-        n: usize, m: usize, k: i32,
-        flights: [(Usize1, i32, Usize1, i32); m],
+        N: usize, M: usize, K: i64,
+        ASBT: [(usize, i64, usize, i64); M],
     }
-    let flights = flights
-        .into_iter()
-        .enumerate()
-        .map(|(index, (dep_port, dep_time, arr_port, arr_time))| Flight {
-            dep_port,
-            dep_time,
-            arr_port,
-            arr_time: arr_time + k,
-            flight_id: index,
-        })
-        .collect::<Vec<_>>();
+    let mut A = vec![0; 100009];
+    let mut B = vec![0; 100009];
+    let mut S = vec![0; 100009];
+    let mut T = vec![0; 100009];
 
-    let mut list = Vec::new();
-    for flight in flights.clone() {
-        list.push(FlightElement {
-            time: flight.dep_time,
-            kind: FlightKind::DEPARTURE(flight.flight_id),
-            airport_id: flight.dep_port,
-        }); // 出発
-        list.push(FlightElement {
-            time: flight.arr_time,
-            kind: FlightKind::ARRIVAL(flight.flight_id),
-            airport_id: flight.arr_port,
-        }); // 到着
-    }
-    for airport_id in 0..n {
-        list.push(FlightElement {
-            time: -1,
-            kind: FlightKind::AIRPORT,
-            airport_id,
-        }); // 各空港 (始点)
-        list.push(FlightElement {
-            time: 2_000_000_100,
-            kind: FlightKind::AIRPORT,
-            airport_id,
-        }); // 各空港 (終着)
-    }
-    list.push(FlightElement {
-        time: -2,
-        kind: FlightKind::OTHER,
-        airport_id: n,
-    });
-    list.push(FlightElement {
-        time: 2_000_000_101,
-        kind: FlightKind::OTHER,
-        airport_id: n,
-    });
-    list.sort();
+    // (時刻, 出発か到着か, 路線番号または空港番号)
+    // 出発 = 2／到着 = 1／最初と最後 = 0
+    // ここで、出発の方が番号が大きい理由は、同じ時刻のときに到着をより早くするため
+    let mut List = Vec::new();
 
     // 頂点番号の情報
-    // 路線index -> そいつが list のどの index にいるか
-    let mut vert_s = vec![0; m]; // 路線i の到着
-    let mut vert_t = vec![0; m]; // 路線i の出発
-    for (node_id, flight) in list.clone().into_iter().enumerate() {
-        match flight.kind {
-            FlightKind::DEPARTURE(flight_id) => {
-                vert_s[flight_id] = node_id;
-            }
-            FlightKind::ARRIVAL(flight_id) => {
-                vert_t[flight_id] = node_id;
-            }
-            _ => {}
+    let mut VertS = vec![0; 100009]; // 路線 i の到着
+    let mut VertT = vec![0; 100009]; // 路線 i の出発
+    let mut Airport = vec![Vec::new(); 100009];
+
+    // グラフおよび dp[i]
+    let mut G = vec![Vec::new(); 400009];
+    let mut dp = vec![0; 400009];
+
+    for i in 0..M {
+        A[i + 1] = ASBT[i].0;
+        S[i + 1] = ASBT[i].1;
+        B[i + 1] = ASBT[i].2;
+        T[i + 1] = ASBT[i].3 + K;
+    }
+
+    // 頂点となり得る (空港, 時刻) の組を「時刻の早い順に」ソート
+    for i in 1..=M {
+        List.push((S[i], 2, i));
+    }
+    for i in 1..=M {
+        List.push((T[i], 1, i));
+    }
+    for i in 1..=N {
+        List.push((-1, 0, i));
+    }
+    for i in 1..=N {
+        List.push((2_100_000_000, 0, i));
+    }
+    List.sort();
+
+    // 各路線の頂点番号を求める
+    // ここで、頂点番号は時刻の早い順に 1, 2, ..., List.size() となる
+    for i in 0..List.len() {
+        if List[i].1 == 2 {
+            VertS[List[i].2] = i + 1;
+        }
+        if List[i].1 == 1 {
+            VertT[List[i].2] = i + 1;
         }
     }
 
-    // それぞれの空港が，どの頂点番号を使うか
-    let mut airport = vec![Vec::new(); n + 1];
-    for (node_id, flight_element) in list.clone().into_iter().enumerate() {
-        airport[flight_element.airport_id].push(node_id);
-    }
-
-    // グラフを作る
-    let l = 2 * (n + m + 1);
-    let source = 0;
-    let target = l - 1;
-    let mut g = vec![Vec::new(); l];
-    for flight_id in 0..m {
-        g[vert_t[flight_id]].push((vert_s[flight_id], 1));
-    }
-    for i in 0..n {
-        for j in 1..airport[i].len() {
-            let u = airport[i][j - 1];
-            let v = airport[i][j];
-            g[v].push((u, 0));
+    // 各空港の頂点番号を求める（空港で待つことに対応する実線を求めるときに使う）
+    for i in 0..List.len() {
+        if List[i].1 == 0 {
+            Airport[List[i].2].push(i + 1);
+        }
+        if List[i].1 == 1 {
+            Airport[B[List[i].2]].push(i + 1);
+        }
+        if List[i].1 == 2 {
+            Airport[A[List[i].2]].push(i + 1);
         }
     }
-    for airport_id in 0..n {
-        g[airport_id + 1].push((source, 0));
-        g[target].push((*airport[airport_id].last().unwrap(), 0));
-    }
 
-    let mut dp = vec![0; l];
-    for i in 1..l {
-        for (u, score) in g[i].clone() {
-            dp[i] = dp[i].max(dp[u] + score);
+    // グラフを作る（辺が逆向きになっていることに注意！）
+    for i in 1..=M {
+        G[VertT[i]].push((VertS[i], 1)); // 路線に対応する辺(点線)
+    }
+    for i in 1..=N {
+        for j in 0..(Airport[i].len() - 1) {
+            let idx1 = Airport[i][j];
+            let idx2 = Airport[i][j + 1];
+            G[idx2].push((idx1, 0)); // 空港で待つことに対応する辺
         }
     }
-    println!("{}", dp.last().unwrap());
-}
 
-#[derive(Clone)]
-struct Flight {
-    dep_port: usize,
-    dep_time: i32,
-    arr_port: usize,
-    arr_time: i32,
-    flight_id: usize,
-}
+    // グラフに始点（頂点 0）と終点（頂点 List.size()+1）を追加
+    for i in 1..=N {
+        G[Airport[i][0]].push((0, 0));
+        G[List.len() + 1].push((Airport[i][Airport[i].len() - 1], 0));
+    }
 
-#[derive(PartialEq, Eq, PartialOrd, Ord, Clone, Debug)]
-struct FlightElement {
-    time: i32,
-    kind: FlightKind,
-    airport_id: usize,
-}
-
-#[derive(PartialEq, Eq, PartialOrd, Clone, Debug)]
-enum FlightKind {
-    AIRPORT,
-    DEPARTURE(usize),
-    ARRIVAL(usize),
-    OTHER,
-}
-
-use std::cmp::Ordering;
-impl Ord for FlightKind {
-    fn cmp(&self, other: &Self) -> Ordering {
-        use FlightKind::*;
-        match (self, other) {
-            (AIRPORT, AIRPORT) => Ordering::Equal,
-            (ARRIVAL(_), ARRIVAL(_)) => Ordering::Equal,
-            (DEPARTURE(_), DEPARTURE(_)) => Ordering::Equal,
-            (OTHER, OTHER) => Ordering::Equal,
-            (OTHER, _) => Ordering::Less,
-            (AIRPORT, _) => Ordering::Less,
-            (DEPARTURE(_), _) => Ordering::Greater,
-            (ARRIVAL(_), _) => {
-                if other == &AIRPORT {
-                    Ordering::Greater
-                } else {
-                    Ordering::Less
-                }
-            }
+    // 動的計画法によって dp[i] の値を求める
+    // 頂点番号は時刻の早い順になっているので、dp[1] から順に計算すれば良い
+    dp[0] = 0;
+    for i in 1..=(List.len() + 1) {
+        for j in 0..G[i].len() {
+            dp[i] = std::cmp::max(dp[i], dp[G[i][j].0] + G[i][j].1);
         }
     }
+
+    // 出力
+    println!("{}", dp[List.len() + 1]);
 }
