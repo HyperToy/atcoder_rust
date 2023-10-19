@@ -10,9 +10,9 @@ fn main() {
     let mut answer = Vec::new();
     let mut rng = rand::thread_rng();
     for _ in 0..q {
-        let y = rng.gen_range(0, 100);
-        let x = rng.gen_range(0, 100);
-        let h = rng.gen_range(0, 50);
+        let y = rng.gen_range(0..100);
+        let x = rng.gen_range(0..100);
+        let h = rng.gen_range(0..50);
         answer.push((Point { y, x }, h));
     }
 
