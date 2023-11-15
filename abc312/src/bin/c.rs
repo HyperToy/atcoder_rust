@@ -7,7 +7,7 @@ fn main() {
         b: [i32; m],
     }
     let mut ng = 0;
-    let mut ok = 1_000_100_000;
+    let mut ok = 1_000_000_001;
     while ng + 1 < ok {
         let wj = (ng + ok) / 2;
         let seller = a.iter().filter(|x| &&wj >= x).count();

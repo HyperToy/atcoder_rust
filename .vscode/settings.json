@@ -22,6 +22,7 @@
         "./abc311/Cargo.toml",
         "./abc312/Cargo.toml",
         "./abc321/Cargo.toml",
+        "./abc327/Cargo.toml",
         "./joi2008yo/Cargo.toml",
     ]
 }
