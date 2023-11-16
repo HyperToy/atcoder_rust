@@ -1,3 +1,4 @@
+use itertools::Itertools;
 use proconio::{marker::Usize1, *};
 use std::collections::HashSet;
 
@@ -14,30 +15,24 @@ fn main() {
     for (u, v) in es {
         dsu.unite(u, v);
     }
-    let mut restricted = HashSet::new();
-    for (x, y) in xy {
-        let mut rx = dsu.root(x);
-        let mut ry = dsu.root(y);
-        if rx > ry {
-            (rx, ry) = (ry, rx);
-        }
-        restricted.insert((rx, ry));
-    }
-    for (p, q) in queries {
-        let mut rp = dsu.root(p);
-        let mut rq = dsu.root(q);
-        if rp > rq {
-            (rp, rq) = (rq, rp);
-        }
-        println!(
-            "{}",
-            if !restricted.contains(&(rp, rq)) {
+    let restricted = xy
+        .into_iter()
+        .map(|(x, y)| (dsu.root(x), dsu.root(y)))
+        .map(|(rx, ry)| if rx > ry { (ry, rx) } else { (rx, ry) })
+        .collect::<HashSet<_>>();
+    println!(
+        "{}",
+        queries
+            .into_iter()
+            .map(|(p, q)| (dsu.root(p), dsu.root(q)))
+            .map(|(rp, rq)| if rp > rq { (rq, rp) } else { (rp, rq) })
+            .map(|(rp, rq)| if !restricted.contains(&(rp, rq)) {
                 "Yes"
             } else {
                 "No"
-            }
-        );
-    }
+            })
+            .join(" ")
+    );
 }
 
 struct Dsu {
