@@ -26,11 +26,8 @@ fn main() {
             .into_iter()
             .map(|(p, q)| (dsu.root(p), dsu.root(q)))
             .map(|(rp, rq)| if rp > rq { (rq, rp) } else { (rp, rq) })
-            .map(|(rp, rq)| if !restricted.contains(&(rp, rq)) {
-                "Yes"
-            } else {
-                "No"
-            })
+            .map(|(rp, rq)| !restricted.contains(&(rp, rq)))
+            .map(|ok| if ok { "Yes" } else { "No" })
             .join(" ")
     );
 }
@@ -58,13 +55,13 @@ impl Dsu {
         if root_u == root_v {
             return;
         }
-        if self.size[root_u] < self.size[root_v] {
-            self.parent[root_u] = root_v;
-            self.size[root_v] += self.size[root_u];
+        let (root_u, root_v) = if self.size[root_u] < self.size[root_v] {
+            (root_u, root_v)
         } else {
-            self.parent[root_v] = root_u;
-            self.size[root_u] += self.size[root_v];
-        }
+            (root_v, root_u)
+        };
+        self.parent[root_u] = root_v;
+        self.size[root_v] += self.size[root_u];
     }
     #[allow(dead_code)]
     fn same(&self, u: usize, v: usize) -> bool {
