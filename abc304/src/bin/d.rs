@@ -7,9 +7,9 @@ fn main() {
         n: usize,
         pq: [(i32, i32); n],
         a_len: usize,
-        mut a: [i32; a_len],
+        a: [i32; a_len],
         b_len: usize,
-        mut b: [i32; b_len],
+        b: [i32; b_len],
     }
     let mut a = VecDeque::from(a);
     a.push_front(0);
