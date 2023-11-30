@@ -1,5 +1,6 @@
 use proconio::{input, marker::Usize1};
 
+// refactor combination の iteration
 fn main() {
     input! {
         n: usize, m: usize, k: i64,
