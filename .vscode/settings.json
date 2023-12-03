@@ -4,6 +4,7 @@
         "atcoder",
         "Deque",
         "itertools",
+        "Polyomino",
         "powf",
         "proconio",
         "tessoku"
