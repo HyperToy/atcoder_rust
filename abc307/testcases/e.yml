@@ -19,6 +19,11 @@ cases:
       987654 456789
     out: |
       778634319
+  - name: my_case
+    in: |
+      2 2
+    out: |
+      2
 
 extend:
   - type: Text
