@@ -18,8 +18,7 @@ fn main() {
     queue.push_back(start);
     while !queue.is_empty() {
         let u = queue.pop_front().unwrap();
-        // refactor .clone()
-        for v in g[u].clone() {
+        for &v in &g[u] {
             if dist[v] > dist[u] {
                 dist[v] = dist[u] + 1;
                 queue.push_back(v);

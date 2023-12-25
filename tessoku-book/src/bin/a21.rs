@@ -36,10 +36,5 @@ fn main() {
         }
     }
 
-    // hack refactor
-    let mut answer = 0;
-    for i in 0..n {
-        answer = max(answer, dp[i][i]);
-    }
-    println!("{}", answer);
+    println!("{}", (0..n).map(|i| dp[i][i]).max().unwrap());
 }

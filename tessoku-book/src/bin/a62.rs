@@ -17,8 +17,7 @@ fn main() {
     seen[start] = true;
     while !stack.is_empty() {
         let u = stack.pop().unwrap();
-        // refactor .clone()
-        for v in g[u].clone() {
+        for &v in &g[u] {
             if !seen[v] {
                 stack.push(v);
                 seen[v] = true;
