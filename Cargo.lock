@@ -11,14 +11,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "ahc030"
-version = "0.1.0"
-dependencies = [
- "itertools",
- "proconio",
-]
-
-[[package]]
 name = "either"
 version = "1.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
