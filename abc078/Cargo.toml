@@ -1,0 +1,32 @@
+[package]
+name = "abc078"
+version = "0.1.0"
+edition = "2018"
+
+[package.metadata.cargo-compete.bin]
+abc078-a = { alias = "a", problem = "https://atcoder.jp/contests/abc078/tasks/abc078_a" }
+abc078-b = { alias = "b", problem = "https://atcoder.jp/contests/abc078/tasks/abc078_b" }
+abc078-c = { alias = "c", problem = "https://atcoder.jp/contests/abc078/tasks/arc085_a" }
+abc078-d = { alias = "d", problem = "https://atcoder.jp/contests/abc078/tasks/arc085_b" }
+
+[[bin]]
+name = "abc078-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "abc078-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "abc078-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "abc078-d"
+path = "src/bin/d.rs"
+
+[dependencies]
+proconio="=0.4.5"
+itertools="=0.11.0"
+
+[dev-dependencies]
