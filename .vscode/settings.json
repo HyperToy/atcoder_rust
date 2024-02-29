@@ -9,10 +9,18 @@
         "proconio",
         "tessoku"
     ],
-    "audioCues.lineHasError": "off",
-    "audioCues.diffLineModified": "off",
-    "audioCues.diffLineInserted": "off",
-    "audioCues.diffLineDeleted": "off",
+    "accessibility.signals.lineHasError": {
+        "sound": "off"
+    },
+    "accessibility.signals.diffLineInserted": {
+        "sound": "off"
+    },
+    "accessibility.signals.diffLineDeleted": {
+        "sound": "off"
+    },
+    "accessibility.signals.diffLineModified": {
+        "sound": "off"
+    },
     // "rust-analyzer.linkedProjects": [
     //     "tessoku-book/Cargo.toml",
     //     "./abc105/Cargo.toml",
