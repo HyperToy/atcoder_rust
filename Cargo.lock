@@ -27,6 +27,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "abc341"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "proconio",
+]
+
+[[package]]
 name = "abc342"
 version = "0.1.0"
 dependencies = [
