@@ -5,29 +5,27 @@ fn main() {
         n: i64,
     }
     let mut answer = 0;
-    for x in 1..n {
-        if x * 2 > n {
-            break;
-        }
+    let mut x = 1;
+    while x * 2 <= n {
         let y = n - x;
         let now = divisors(x) * divisors(y);
         answer += now * if x != y { 2 } else { 1 };
+        x += 1;
     }
     println!("{}", answer);
 }
 
 fn divisors(x: i64) -> i64 {
     let mut res = 0;
-    for i in 1..=x {
-        if i * i > x {
-            break;
-        }
+    let mut i = 1;
+    while i * i <= x {
         if x % i == 0 {
             res += 1;
             if i * i != x {
                 res += 1;
             }
         }
+        i += 1;
     }
     res
 }
