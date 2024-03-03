@@ -10,7 +10,9 @@ fn main() {
         assert_eq!(field[i][j], 0);
         field[i][j] = v;
     }
-    let mut dp = vec![vec![vec![[std::i64::MIN; 2]; 4]; c]; r];
+    // dp[i][j][k][flag] := マス(i, j) にいて、その行で k個のアイテムを拾っており、 flag (そのマスのアイテムを持っているか) のときの、
+    // アイテムの価値の最大値
+    let mut dp = vec![vec![[[std::i64::MIN; 2]; 4]; c]; r];
     dp[0][0][0][0] = 0;
     for i in 0..r {
         for j in 0..c {
@@ -27,11 +29,12 @@ fn main() {
             }
         }
     }
-    let mut answer = std::i64::MIN;
-    for k in 0..=3 {
-        for flag in 0..2 {
-            answer = answer.max(dp[r - 1][c - 1][k][flag]);
-        }
-    }
-    println!("{}", answer);
+    println!(
+        "{}",
+        dp[r - 1][c - 1]
+            .iter()
+            .map(|v| v.iter().max().unwrap())
+            .max()
+            .unwrap()
+    );
 }
