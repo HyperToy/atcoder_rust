@@ -1,1 +1,1 @@
-workspace = {members = ["abc334", "practice", "abc342", "abc078", "abc129", "abc341", "abc292", "abc175", "abc138"], exclude = []}
+workspace = {members = ["abc334", "practice", "abc342", "abc078", "abc129", "abc341", "abc292", "abc175", "abc138", "tessoku-book"], exclude = []}
