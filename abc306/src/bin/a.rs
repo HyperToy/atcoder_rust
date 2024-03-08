@@ -1,8 +1,10 @@
-use proconio::input;
+use itertools::Itertools;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        //
+        _n: usize,
+        s: Chars,
     }
-    todo!();
+    println!("{}", s.iter().interleave(s.iter()).join(""));
 }
