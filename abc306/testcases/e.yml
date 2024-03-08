@@ -1,7 +1,7 @@
 ---
 type: Batch
 timelimit: 6s
-match: Lines
+match: SplitWhitespace
 
 cases:
   - name: sample1
