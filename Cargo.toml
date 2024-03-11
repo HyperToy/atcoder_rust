@@ -5,6 +5,7 @@ workspace = {members = [
     "abc175",
     "abc292",
     "abc298",
+    "abc299",
     "abc300",
     "abc306",
     "abc308",

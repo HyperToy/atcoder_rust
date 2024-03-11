@@ -12,6 +12,10 @@
     "accessibility.signals.lineHasError": {
         "sound": "off"
     },
+    "accessibility.signals.lineHasWarning": {
+        "sound": "off",
+        "announcement": "auto"
+    },
     "accessibility.signals.diffLineInserted": {
         "sound": "off"
     },
