@@ -6,6 +6,7 @@
         "itertools",
         "Polyomino",
         "powf",
+        "procon",
         "proconio",
         "tessoku"
     ],
@@ -24,6 +25,10 @@
     },
     "accessibility.signals.diffLineModified": {
         "sound": "off"
+    },
+    "accessibility.signals.lineHasFoldedArea": {
+        "sound": "off",
+        "announcement": "auto"
     },
     // "rust-analyzer.linkedProjects": [
     //     "tessoku-book/Cargo.toml",
