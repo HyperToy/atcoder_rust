@@ -29,4 +29,4 @@ workspace = {members = [
     "abc342",
     "practice",
     "tessoku-book"
-, "abc344"], exclude = []}
+, "abc344", "abc323"], exclude = []}
