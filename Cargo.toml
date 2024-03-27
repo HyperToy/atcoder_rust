@@ -1,5 +1,6 @@
 workspace = {members = [
     "abc078",
+    "abc126",
     "abc129",
     "abc138",
     "abc175",
@@ -15,6 +16,7 @@ workspace = {members = [
     "abc317",
     "abc318",
     "abc319",
+    "abc323",
     "abc331",
     "abc332",
     "abc333",
@@ -27,6 +29,9 @@ workspace = {members = [
     "abc340",
     "abc341",
     "abc342",
+    "abc343",
+    "abc344",
+    "abc345",
     "practice",
     "tessoku-book"
-, "abc344", "abc323", "abc343", "abc345"], exclude = []}
+], exclude = []}
