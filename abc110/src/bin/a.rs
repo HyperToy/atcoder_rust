@@ -1,10 +1,10 @@
-use itertools::Itertools;
 use proconio::input;
 
 fn main() {
     input! {
         a: [i32; 3],
     }
+    /*
     println!(
         "{}",
         a.iter()
@@ -13,4 +13,6 @@ fn main() {
             .max()
             .unwrap()
     );
+    */
+    println!("{}", a.iter().sum::<i32>() + a.iter().max().unwrap() * 9);
 }
