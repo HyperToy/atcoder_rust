@@ -1,0 +1,42 @@
+[package]
+name = "abc140"
+version = "0.1.0"
+edition = "2018"
+
+[package.metadata.cargo-compete.bin]
+abc140-a = { alias = "a", problem = "https://atcoder.jp/contests/abc140/tasks/abc140_a" }
+abc140-b = { alias = "b", problem = "https://atcoder.jp/contests/abc140/tasks/abc140_b" }
+abc140-c = { alias = "c", problem = "https://atcoder.jp/contests/abc140/tasks/abc140_c" }
+abc140-d = { alias = "d", problem = "https://atcoder.jp/contests/abc140/tasks/abc140_d" }
+abc140-e = { alias = "e", problem = "https://atcoder.jp/contests/abc140/tasks/abc140_e" }
+abc140-f = { alias = "f", problem = "https://atcoder.jp/contests/abc140/tasks/abc140_f" }
+
+[[bin]]
+name = "abc140-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "abc140-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "abc140-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "abc140-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "abc140-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "abc140-f"
+path = "src/bin/f.rs"
+
+[dependencies]
+proconio="=0.4.5"
+itertools="=0.11.0"
+
+[dev-dependencies]
