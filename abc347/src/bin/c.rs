@@ -6,30 +6,18 @@ fn main() {
         n: usize, (a, b): (i64, i64),
         d: [i64; n],
     }
+    let d = d.iter().map(|x| x % (a + b)).collect::<Vec<_>>();
     let d = d
+        .clone()
         .iter()
-        .map(|x| x % (a + b))
+        .map(|&x| x + (a + b))
+        .chain(d.into_iter())
         .sorted()
         .dedup()
         .collect::<Vec<_>>();
-    let mut first_event = std::i64::MAX;
-    let mut last_event = std::i64::MIN;
-
-    for x in &d {
-        first_event = first_event.min(*x);
-        last_event = last_event.max(*x);
-    }
-    let mut longest_free = 0;
+    let mut longest_gap = 0;
     for i in 1..d.len() {
-        longest_free = longest_free.max(d[i] - d[i - 1] - 1);
+        longest_gap = longest_gap.max(d[i] - d[i - 1] - 1);
     }
-
-    println!(
-        "{}",
-        if last_event - first_event + 1 <= a || longest_free >= b {
-            "Yes"
-        } else {
-            "No"
-        }
-    );
+    println!("{}", if longest_gap >= b { "Yes" } else { "No" });
 }

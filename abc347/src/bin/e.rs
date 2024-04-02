@@ -9,16 +9,21 @@ fn main() {
     }
     let mut s = HashSet::new();
     let mut a = vec![0; n];
-    for x in xs {
+    let mut size_sum = vec![0; q + 1];
+    let mut appear = vec![None; n];
+    for (i, x) in xs.into_iter().enumerate() {
         if s.contains(&x) {
+            a[x] += size_sum[i] - size_sum[appear[x].unwrap()];
             s.remove(&x);
+            appear[x] = None;
         } else {
+            appear[x] = Some(i);
             s.insert(x);
         }
-        for &j in &s {
-            a[j] += s.len();
-        }
+        size_sum[i + 1] = s.len() + size_sum[i];
     }
-    todo!();
+    for j in s {
+        a[j] += size_sum[q] - size_sum[appear[j].unwrap()];
+    }
     println!("{}", a.iter().join(" "));
 }
