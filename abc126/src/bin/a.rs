@@ -6,7 +6,7 @@ use proconio::{
 
 fn main() {
     input! {
-        n: usize, k: Usize1,
+        _n: usize, k: Usize1,
         mut s: Chars,
     }
     s[k] = match s[k] {
