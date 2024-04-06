@@ -14,7 +14,7 @@ fn main() {
         n: usize,
         potions: [((Usize1, Usize1), i32); n],
     }
-    let mut potions = potions.into_iter().collect::<HashMap<_, _>>();
+    let potions = potions.into_iter().collect::<HashMap<_, _>>();
     let (sy, sx, ty, tx) = {
         let (mut sy, mut sx, mut ty, mut tx) = (0, 0, 0, 0);
         for i in 0..h {
@@ -40,11 +40,9 @@ fn main() {
         let now = queue.pop_front().unwrap();
         let (py, px) = now.0;
         let mut e = now.1;
-        // eprintln!("{} {} {} ", py, px, e);
         if let Some(ne) = potions.get(&(py, px)) {
             if *ne > e && *ne > max_energy[py][px] {
                 e = *ne;
-                potions.remove(&(py, px));
                 max_energy[py][px] = e;
                 queue.push_back(((py, px), e));
                 continue;
