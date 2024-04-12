@@ -2,7 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-        //
+        n: i32,
     }
-    todo!();
+    println!("{}", n.trailing_zeros());
 }
