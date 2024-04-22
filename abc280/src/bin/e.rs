@@ -18,6 +18,7 @@ fn main() {
 fn mod_inverse(a: u64) -> u64 {
     pow(a, MOD - 2)
 }
+// repeated square 繰返し二乗法
 fn pow(mut a: u64, mut n: u64) -> u64 {
     let mut res = 1;
     while n > 0 {
