@@ -1,0 +1,42 @@
+[package]
+name = "agc063"
+version = "0.1.0"
+edition = "2018"
+
+[package.metadata.cargo-compete.bin]
+agc063-a = { alias = "a", problem = "https://atcoder.jp/contests/agc063/tasks/agc063_a" }
+agc063-b = { alias = "b", problem = "https://atcoder.jp/contests/agc063/tasks/agc063_b" }
+agc063-c = { alias = "c", problem = "https://atcoder.jp/contests/agc063/tasks/agc063_c" }
+agc063-d = { alias = "d", problem = "https://atcoder.jp/contests/agc063/tasks/agc063_d" }
+agc063-e = { alias = "e", problem = "https://atcoder.jp/contests/agc063/tasks/agc063_e" }
+agc063-f = { alias = "f", problem = "https://atcoder.jp/contests/agc063/tasks/agc063_f" }
+
+[[bin]]
+name = "agc063-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "agc063-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "agc063-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "agc063-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "agc063-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "agc063-f"
+path = "src/bin/f.rs"
+
+[dependencies]
+proconio="=0.4.5"
+itertools="=0.11.0"
+
+[dev-dependencies]
