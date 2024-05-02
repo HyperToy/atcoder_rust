@@ -6,18 +6,18 @@ fn main() {
         s: Chars,
     }
     let mut logo_min = 0;
-    let mut muji_now = m;
+    let mut plain_now = m;
     let mut logo_now = 0;
     for c in s {
         match c {
             '0' => {
                 logo_min = logo_min.min(logo_now);
-                muji_now = m;
+                plain_now = m;
                 logo_now = 0;
             }
             '1' => {
-                if muji_now > 0 {
-                    muji_now -= 1;
+                if plain_now > 0 {
+                    plain_now -= 1;
                 } else {
                     logo_now -= 1;
                 }

@@ -1,9 +1,10 @@
-/// https://qiita.com/hatoo@github/items/5c6814e72ddd2ecaf48f
+// https://qiita.com/hatoo@github/items/5c6814e72ddd2ecaf48f
+#![allow(dead_code)]
 use cargo_snippet::snippet;
 
 // こんなかんじでアノテーションで以下の関数がスニペットであることを指定します
-// この場合mymathとgcdという名前のスニペットであることを表しています
-#[snippet("mymath")]
+// この場合my_mathとgcdという名前のスニペットであることを表しています
+#[snippet("my_math")]
 #[snippet("gcd")]
 fn gcd(a: u64, b: u64) -> u64 {
     if b == 0 {
@@ -14,7 +15,7 @@ fn gcd(a: u64, b: u64) -> u64 {
 }
 
 // こっちの書き方でもいいです
-#[snippet(name = "mymath")]
+#[snippet(name = "my_math")]
 // 名前を省略すると関数名がそのままスニペット名になります
 #[snippet]
 fn lcm(a: u64, b: u64) -> u64 {

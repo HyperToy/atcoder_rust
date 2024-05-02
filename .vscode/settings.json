@@ -8,7 +8,8 @@
         "powf",
         "procon",
         "proconio",
-        "tessoku"
+        "tessoku",
+        "timelimit"
     ],
     "accessibility.signals.lineHasError": {
         "sound": "off"
