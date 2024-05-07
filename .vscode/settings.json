@@ -12,7 +12,12 @@
         "timelimit"
     ],
     "accessibility.signals.lineHasError": {
-        "sound": "off"
+        "sound": "off",
+        "announcement": "auto"
+    },
+    "accessibility.signals.positionHasError": {
+        "sound": "off",
+        "announcement": "auto"
     },
     "accessibility.signals.lineHasWarning": {
         "sound": "off",
