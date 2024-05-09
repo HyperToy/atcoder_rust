@@ -1,0 +1,42 @@
+[package]
+name = "arc176"
+version = "0.1.0"
+edition = "2018"
+
+[package.metadata.cargo-compete.bin]
+arc176-a = { alias = "a", problem = "https://atcoder.jp/contests/arc176/tasks/arc176_a" }
+arc176-b = { alias = "b", problem = "https://atcoder.jp/contests/arc176/tasks/arc176_b" }
+arc176-c = { alias = "c", problem = "https://atcoder.jp/contests/arc176/tasks/arc176_c" }
+arc176-d = { alias = "d", problem = "https://atcoder.jp/contests/arc176/tasks/arc176_d" }
+arc176-e = { alias = "e", problem = "https://atcoder.jp/contests/arc176/tasks/arc176_e" }
+arc176-f = { alias = "f", problem = "https://atcoder.jp/contests/arc176/tasks/arc176_f" }
+
+[[bin]]
+name = "arc176-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "arc176-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "arc176-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "arc176-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "arc176-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "arc176-f"
+path = "src/bin/f.rs"
+
+[dependencies]
+proconio="=0.4.5"
+itertools="=0.11.0"
+
+[dev-dependencies]
