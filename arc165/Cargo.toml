@@ -1,0 +1,42 @@
+[package]
+name = "arc165"
+version = "0.1.0"
+edition = "2018"
+
+[package.metadata.cargo-compete.bin]
+arc165-a = { alias = "a", problem = "https://atcoder.jp/contests/arc165/tasks/arc165_a" }
+arc165-b = { alias = "b", problem = "https://atcoder.jp/contests/arc165/tasks/arc165_b" }
+arc165-c = { alias = "c", problem = "https://atcoder.jp/contests/arc165/tasks/arc165_c" }
+arc165-d = { alias = "d", problem = "https://atcoder.jp/contests/arc165/tasks/arc165_d" }
+arc165-e = { alias = "e", problem = "https://atcoder.jp/contests/arc165/tasks/arc165_e" }
+arc165-f = { alias = "f", problem = "https://atcoder.jp/contests/arc165/tasks/arc165_f" }
+
+[[bin]]
+name = "arc165-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "arc165-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "arc165-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "arc165-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "arc165-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "arc165-f"
+path = "src/bin/f.rs"
+
+[dependencies]
+proconio="=0.4.5"
+itertools="=0.11.0"
+
+[dev-dependencies]
