@@ -5,8 +5,5 @@ fn main() {
         n: usize, a: i32, b: i32,
         c: [i32; n],
     }
-    println!(
-        "{}",
-        c.iter().enumerate().find(|(_, &x)| x == a + b).unwrap().0 + 1
-    );
+    println!("{}", c.iter().position(|&x| x == a + b).unwrap() + 1);
 }
