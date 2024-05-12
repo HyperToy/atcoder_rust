@@ -1,21 +1,27 @@
-use proconio::{input, marker::Chars};
-use std::collections::HashMap;
+use proconio::input;
 
-// TLE
 fn main() {
     input! {
         n: usize,
-        s: [Chars; n],
+        mut s: [String; n],
     }
-    let mut count = HashMap::new();
-    for i in 0..n {
-        for j in 0..s[i].len() {
-            *(count.entry(&s[i][0..=j]).or_insert(0)) += 1;
+    s.sort();
+    s.push(String::new());
+    let mut stack = Vec::new();
+    let mut answer = 0;
+    for (i, s) in s.iter().enumerate() {
+        let lcp = stack
+            .iter()
+            .zip(s.chars())
+            .take_while(|&(&(c, _), d)| c == d)
+            .count();
+        while stack.len() > lcp {
+            let (_, start) = stack.pop().unwrap();
+            answer += (i - start) * (i - start - 1) / 2;
         }
-    }
-    let mut answer = 0i64;
-    for (_k, v) in count {
-        answer += v * (v - 1) / 2;
+        for c in s[lcp..].chars() {
+            stack.push((c, i));
+        }
     }
     println!("{}", answer);
 }
