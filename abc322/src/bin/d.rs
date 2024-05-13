@@ -2,55 +2,70 @@ use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        ps: [[Chars; 4]; 3],
+        mut ps: [[Chars; 4]; 3],
     }
-    let ps = ps
-        .into_iter()
-        .map(|p| Polyomino::from(p))
-        .collect::<Vec<_>>();
+    let mut ok = false;
+    for _ in 0..4 {
+        for _ in 0..4 {
+            ok |= dfs(0, &mut vec![vec![false; 4]; 4], &ps);
+            ps[1] = rotate(&ps[1]);
+        }
+        ps[2] = rotate(&ps[2]);
+    }
+    println!("{}", if ok { "Yes" } else { "No" });
 }
 
-struct Polyomino {
-    height: usize,
-    width: usize,
-    minos: Vec<(usize, usize)>,
-}
-
-impl Polyomino {
-    fn from(p: Vec<Vec<char>>) -> Self {
-        let mut top = p.len();
-        let mut bottom = 0;
-        for i in 0..p.len() {
-            if p[i].iter().any(|c| c == &'#') {
-                top = top.min(i);
-                bottom = bottom.max(i);
-            }
-        }
-        let mut left = 0;
-        let mut right = p[0].len() - 1;
-        for j in 0..p[0].len() {
-            for i in 0..p.len() {
-                if p[i][j] == '#' {
-                    left = left.min(j);
-                    right = right.max(j);
-                    break;
-                }
-            }
-        }
-        let height = bottom - top + 1;
-        let width = right - left + 1;
-        let mut minos = vec![];
-        for i in 0..height {
-            for j in 0..width {
-                if p[top + i][left + j] == '#' {
-                    minos.push((i, j));
-                }
-            }
-        }
-        Polyomino {
-            height,
-            width,
-            minos,
+fn rotate(p: &Vec<Vec<char>>) -> Vec<Vec<char>> {
+    let mut res = vec![vec!['.'; 4]; 4];
+    for i in 0..4 {
+        for j in 0..4 {
+            res[3 - j][i] = p[i][j];
         }
     }
+    res
+}
+
+fn dfs(i: usize, exist: &mut Vec<Vec<bool>>, ps: &Vec<Vec<Vec<char>>>) -> bool {
+    if i == 3 {
+        let mut ok = true;
+        for u in 0..4 {
+            for v in 0..4 {
+                ok &= exist[u][v];
+            }
+        }
+        return ok;
+    }
+    let mut ok = false;
+    for di in -3..=3 {
+        for dj in -3..=3 {
+            let mut ex2 = exist.clone();
+            ok |= can_put(&mut ex2, &ps[i], di, dj) && dfs(i + 1, &mut ex2, &ps);
+        }
+    }
+    ok
+}
+
+fn can_put(exist: &mut Vec<Vec<bool>>, p: &Vec<Vec<char>>, di: isize, dj: isize) -> bool {
+    for i in 0..4 {
+        for j in 0..4 {
+            if p[i][j] == '#' {
+                let ni = i as isize + di;
+                let nj = j as isize + dj;
+                if !inside(ni, nj) {
+                    return false;
+                }
+                let ni = ni as usize;
+                let nj = nj as usize;
+                if exist[ni][nj] {
+                    return false;
+                }
+                exist[ni][nj] = true;
+            }
+        }
+    }
+    return true;
+}
+
+fn inside(i: isize, j: isize) -> bool {
+    0 <= i && i < 4 && 0 <= j && j < 4
 }
