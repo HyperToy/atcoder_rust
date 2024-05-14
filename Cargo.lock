@@ -1812,6 +1812,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "practice2"
+version = "0.1.0"
+dependencies = [
+ "ac-library-rs",
+ "itertools 0.11.0",
+ "proconio",
+]
+
+[[package]]
 name = "proconio"
 version = "0.4.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
