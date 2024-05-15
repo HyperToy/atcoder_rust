@@ -1,0 +1,38 @@
+[package]
+name = "wtf22-day1-open"
+version = "0.1.0"
+edition = "2018"
+
+[package.metadata.cargo-compete.bin]
+wtf22-day1-open-a = { alias = "a", problem = "https://atcoder.jp/contests/wtf22-day1-open/tasks/wtf22_day1_a" }
+wtf22-day1-open-b = { alias = "b", problem = "https://atcoder.jp/contests/wtf22-day1-open/tasks/wtf22_day1_b" }
+wtf22-day1-open-c = { alias = "c", problem = "https://atcoder.jp/contests/wtf22-day1-open/tasks/wtf22_day1_c" }
+wtf22-day1-open-d = { alias = "d", problem = "https://atcoder.jp/contests/wtf22-day1-open/tasks/wtf22_day1_d" }
+wtf22-day1-open-e = { alias = "e", problem = "https://atcoder.jp/contests/wtf22-day1-open/tasks/wtf22_day1_e" }
+
+[[bin]]
+name = "wtf22-day1-open-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "wtf22-day1-open-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "wtf22-day1-open-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "wtf22-day1-open-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "wtf22-day1-open-e"
+path = "src/bin/e.rs"
+
+[dependencies]
+ac-library-rs="0.1.1"
+itertools="=0.11.0"
+proconio="=0.4.5"
+
+[dev-dependencies]
