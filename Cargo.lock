@@ -1650,6 +1650,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "09e1ead7b72f44698f97266946c0576d00c9e2010858f5aba47aa4660177ef73"
 
 [[package]]
+name = "agc031"
+version = "0.1.0"
+dependencies = [
+ "ac-library-rs",
+ "itertools 0.11.0",
+ "proconio",
+]
+
+[[package]]
 name = "agc063"
 version = "0.1.0"
 dependencies = [
@@ -1677,6 +1686,15 @@ dependencies = [
 name = "arc168"
 version = "0.1.0"
 dependencies = [
+ "itertools 0.11.0",
+ "proconio",
+]
+
+[[package]]
+name = "arc172"
+version = "0.1.0"
+dependencies = [
+ "ac-library-rs",
  "itertools 0.11.0",
  "proconio",
 ]
