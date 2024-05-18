@@ -1,24 +1,16 @@
 use proconio::input;
 
-// wa
 fn main() {
     input! {
         n: usize,
         ab: [(i32, i32); n],
     }
-    let mut g = vec![Vec::new(); n];
-    for i in 0..n {
-        for j in 0..i {
-            if ab[i].0 == ab[i].0 || ab[i].1 == ab[j].1 {
-                g[i].push(j);
-                g[j].push(i);
-            }
-        }
-    }
-    let mut used = vec![false; n];
+    // bit DP
+    // dp[S] := S で表される状態から先手番でスタートしたとき、先手必勝であるか
+    let mut dp = vec![None; 1 << n];
     println!(
         "{}",
-        if dfs_takahashi(n, &g, &mut used) {
+        if dfs(n, &ab, (1 << n) - 1, &mut dp) {
             "Takahashi"
         } else {
             "Aoki"
@@ -26,43 +18,28 @@ fn main() {
     );
 }
 
-fn dfs_takahashi(n: usize, g: &Vec<Vec<usize>>, used: &mut Vec<bool>) -> bool {
-    let mut valid_move_exist = false;
+// メモ化再帰
+fn dfs(n: usize, ab: &Vec<(i32, i32)>, state: usize, dp: &mut Vec<Option<bool>>) -> bool {
+    // メモがあれば返す
+    if let Some(x) = dp[state] {
+        return x;
+    }
+    let mut res = false;
     for i in 0..n {
-        if used[i] {
+        if state & (1 << i) == 0 {
             continue;
         }
-        for &j in &g[i] {
-            if used[j] {
+        for j in 0..i {
+            if state & (1 << j) == 0 {
                 continue;
             }
-            // 可能な手を全探索
-            used[i] = true;
-            used[j] = true;
-            valid_move_exist &= !dfs_aoki(n, g, used);
-            used[i] = false;
-            used[j] = false;
-        }
-    }
-    !valid_move_exist
-}
-fn dfs_aoki(n: usize, g: &Vec<Vec<usize>>, used: &mut Vec<bool>) -> bool {
-    let mut valid_move_exist = false;
-    for i in 0..n {
-        if used[i] {
-            continue;
-        }
-        for &j in &g[i] {
-            if used[j] {
+            if ab[i].0 != ab[j].0 && ab[i].1 != ab[j].1 {
                 continue;
             }
-            // 可能な手を全探索
-            used[i] = true;
-            used[j] = true;
-            valid_move_exist &= !dfs_takahashi(n, g, used);
-            used[i] = false;
-            used[j] = false;
+            let state = state ^ (1 << i) ^ (1 << j); // i と j を除いた盤面
+            res |= !dfs(n, ab, state, dp); // 1つでも必敗盤面を渡せるならば、必勝盤面
         }
     }
-    !valid_move_exist
+    dp[state] = Some(res);
+    res
 }
