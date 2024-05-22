@@ -1363,6 +1363,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "abc305"
+version = "0.1.0"
+dependencies = [
+ "ac-library-rs",
+ "itertools 0.11.0",
+ "proconio",
+]
+
+[[package]]
 name = "abc306"
 version = "0.1.0"
 dependencies = [
