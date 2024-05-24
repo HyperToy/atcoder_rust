@@ -34,7 +34,6 @@ impl Solver {
     }
 }
 
-// TODO: snippet
 #[allow(dead_code)]
 mod procon_lib {
     use std::{
