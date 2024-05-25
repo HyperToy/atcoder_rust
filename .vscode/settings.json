@@ -25,6 +25,10 @@
         "sound": "off",
         "announcement": "auto"
     },
+    "accessibility.signals.positionHasWarning": {
+        "sound": "off",
+        "announcement": "auto"
+    },
     "accessibility.signals.diffLineInserted": {
         "sound": "off"
     },
