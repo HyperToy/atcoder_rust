@@ -1,104 +1,65 @@
 use proconio::{input, source::line::LineSource};
-use std::io::{stdin, stdout, BufReader, Write};
+use std::{
+    collections::VecDeque,
+    io::{stdin, stdout, BufRead, BufReader, Write},
+};
 
+// interactive
 fn main() {
     let stdin = stdin();
     let mut source = LineSource::new(BufReader::new(stdin.lock()));
     input! {
         from &mut source,
-        n: usize, (l, r): (u64, u64),
+        n: usize, (l, r): (usize, usize),
     }
+    let n2 = 1 << n;
     let r = r + 1;
-    let mut queries = make_query(l, r);
-    let mut left = vec![];
-    let mut right = vec![];
-
-    let (li, lj) = queries[0];
-    let (ri, rj) = queries[queries.len() - 1];
-
-    for a in 0..lj {
-        if lj >> (a - 1) == 0 {
-            break;
-        }
-        for b in 0..rj {
-            if rj >> (b - 1) == 0 {
+    let mut dist = vec![std::i32::MAX; n2 + 1];
+    let mut pre = vec![std::usize::MAX; n2 + 1];
+    let mut q = VecDeque::new();
+    q.push_back(l);
+    dist[l] = 0;
+    while !q.is_empty() {
+        let u = q.pop_front().unwrap();
+        let mut push = |to| {
+            if dist[to] < dist[u] + 1 {
+                return;
+            }
+            dist[to] = dist[u] + 1;
+            pre[to] = u;
+            q.push_back(to);
+        };
+        for i in 0..=n {
+            if u >= 1 << i {
+                push(u - (1 << i));
+            }
+            if u + (1 << i) <= n2 {
+                push(u + (1 << i));
+            }
+            if u >> i & 1 == 1 {
                 break;
             }
-            let ll = make_l(li + a, lj >> a);
-            let rr = make_r(ri + b, rj >> b);
-            let now_query = make_query(ll, rr);
-            let now_left = make_query(ll, l);
-            let now_right = make_query(r, rr);
-            if now_query.len() + now_left.len() + now_right.len()
-                < queries.len() + left.len() + right.len()
-            {
-                queries = now_query;
-                left = now_left;
-                right = now_right
-            }
         }
     }
-
     let mut answer = 0;
-    for (l, r) in queries {
-        println!("? {} {}", l, r);
-        stdout().flush().unwrap();
-        input! {
-            from &mut source,
-            t: i32,
-        }
-        if t == -1 {
-            return;
-        }
-        answer += t;
-        answer %= 100;
+    let mut pos = r;
+    while pos != l {
+        let t = query(pre[pos], pos, &mut source);
+        answer = (answer + t + 100) % 100;
+        pos = pre[pos];
     }
-    for (l, r) in left {
-        println!("? {} {}", l, r);
-        stdout().flush().unwrap();
-        input! {
-            from &mut source,
-            t: i32,
-        }
-        if t == -1 {
-            return;
-        }
-        answer += 100 - t;
-        answer %= 100;
-    }
-    for (l, r) in right {
-        println!("? {} {}", l, r);
-        stdout().flush().unwrap();
-        input! {
-            from &mut source,
-            t: i32,
-        }
-        if t == -1 {
-            return;
-        }
-        answer += 100 - t;
-        answer %= 100;
-    }
-
     println!("! {}", answer);
 }
 
-fn make_query(mut l: u64, r: u64) -> Vec<(u64, u64)> {
-    let mut queries = vec![];
-    while l != r {
-        let mut i = 0;
-        while l % (1 << i + 1) == 0 && l + (1 << i + 1) <= r {
-            i += 1
-        }
-        queries.push((i, l / (1 << i)));
-        l += 1 << i;
+fn query<R: BufRead>(l: usize, r: usize, source: &mut LineSource<R>) -> i32 {
+    let (l, r, sign) = if l < r { (l, r, 1) } else { (r, l, -1) };
+    let i = (r - l).trailing_zeros();
+    let j = l / (r - l);
+    println!("? {} {}", i, j);
+    stdout().flush().unwrap();
+    input! {
+        from source,
+        t: i32,
     }
-    queries
-}
-
-fn make_l(i: u64, j: u64) -> u64 {
-    (1 << i) * j
-}
-fn make_r(i: u64, j: u64) -> u64 {
-    (1 << i) * (j + 1)
+    t * sign
 }
