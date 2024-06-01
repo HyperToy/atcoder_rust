@@ -1,5 +1,4 @@
-use proconio::*;
-// use itertools::Itertools;
+use proconio::input;
 
 fn main() {
     input! {
