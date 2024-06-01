@@ -13,78 +13,36 @@ fn main() {
         g[v].push(u);
     }
     // 次数 1 の頂点を探す
-    let start = g
+    let leaf = g
         .iter()
         .enumerate()
-        .find_map(|(i, to)| if to.len() == 1 { Some(i) } else { None })
+        .find_map(|(v, to)| if to.len() == 1 { Some(v) } else { None })
         .unwrap();
-    let mut vs = vec![Kind::Uncertain; n];
+    let center = g[leaf][0];
+    let mut dist = vec![std::i32::MAX; n];
     let mut q = VecDeque::new();
-    vs[start] = Kind::Leaf;
-    q.push_back(start);
+    dist[center] = 0;
+    q.push_back(center);
     while let Some(u) = q.pop_front() {
-        match vs[u] {
-            Kind::Center => {
-                for &v in &g[u] {
-                    if vs[v] != Kind::Uncertain {
-                        continue;
-                    }
-                    vs[v] = Kind::Leaf;
-                    q.push_back(v);
-                }
+        for &v in &g[u] {
+            if dist[v] > dist[u] + 1 {
+                dist[v] = dist[u] + 1;
+                q.push_back(v)
             }
-            Kind::Leaf => {
-                if g[u].len() == 1 {
-                    let v = g[u][0];
-                    if vs[v] == Kind::Uncertain {
-                        vs[v] = Kind::Center;
-                        q.push_back(v);
-                    }
-                } else {
-                    assert_eq!(g[u].len(), 2);
-                    let (v1, v2) = (g[u][0], g[u][1]);
-                    match (vs[v1], vs[v2]) {
-                        (Kind::Center, Kind::Uncertain) => {
-                            vs[v2] = Kind::Leaf;
-                            q.push_back(v2);
-                        }
-                        (Kind::Leaf, Kind::Uncertain) => {
-                            vs[v2] = Kind::Center;
-                            q.push_back(v2);
-                        }
-                        (Kind::Uncertain, Kind::Center) => {
-                            vs[v1] = Kind::Leaf;
-                            q.push_back(v1);
-                        }
-                        (Kind::Uncertain, Kind::Leaf) => {
-                            vs[v1] = Kind::Center;
-                            q.push_back(v1);
-                        }
-                        _ => unreachable!(),
-                    }
-                }
-            }
-            Kind::Uncertain => unreachable!(),
         }
     }
     println!(
         "{}",
-        vs.into_iter()
+        dist.into_iter()
             .enumerate()
-            .filter_map(|(v, k)| {
-                match k {
-                    Kind::Center => Some(g[v].len()),
-                    Kind::Leaf => None,
-                    Kind::Uncertain => unreachable!(),
+            .filter_map(|(v, d)| {
+                if d % 3 == 0 {
+                    Some(g[v].len())
+                } else {
+                    None
                 }
             })
             .sorted()
             .join(" ")
     );
-}
-#[derive(Clone, Copy, PartialEq, Eq)]
-enum Kind {
-    Uncertain,
-    Center,
-    Leaf,
 }
