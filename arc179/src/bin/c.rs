@@ -1,32 +1,56 @@
-use proconio::{input, source::line::LineSource};
-use std::io::{stdin, BufReader};
+use itertools::Itertools;
+use proconio::input_interactive;
+use std::{cmp::Ordering, process::exit};
 
 fn main() {
-    let stdin = stdin();
-    let mut source = LineSource::new(BufReader::new(stdin.lock()));
-    input! {
-        from &mut source,
+    input_interactive! {
         n: usize,
     }
-    // judge[i][j] := a[i] < a[j] ?
-    let mut judge = vec![vec![None; n * 2]; n * 2];
-    let mut max = 0;
-    for i in 1..n {
-        println!("? {} {}", max, i);
-        input! {
-            from &mut source,
-            t: i32,
+    let mut indices = (1..=n).collect_vec();
+    indices.sort_by(|&i, &j| {
+        println!("? {} {}", i, j);
+        input_interactive! {
+            result: i32,
         }
-        let res = match t {
-            0 => false,
-            1 => true,
-            _ => unreachable!(),
+        if result == -1 {
+            exit(-1);
+        } else if result == 1 {
+            Ordering::Less
+        } else {
+            Ordering::Greater
+        }
+    });
+    while indices.len() > 1 {
+        let i = indices[0];
+        let j = indices.last().unwrap();
+        println!("+ {} {}", i, j);
+        input_interactive! {
+            result: i32,
+        }
+        if result == -1 {
+            exit(-1);
+        }
+        indices.pop();
+        indices.remove(0);
+        let p = result as usize;
+        let pos = indices.binary_search_by(|&x| {
+            println!("? {} {}", x, p);
+            input_interactive! {
+                result: i32,
+            }
+            if result == -1 {
+                exit(-1);
+            } else if result == 1 {
+                Ordering::Less
+            } else {
+                Ordering::Greater
+            }
+        });
+        let pos = match pos {
+            Ok(pos) => pos,
+            Err(pos) => pos,
         };
-        judge[max][i] = Some(res);
-        judge[i][max] = Some(!res);
-        if res {
-            max = i;
-        }
+        indices.insert(pos, p);
     }
-    todo!();
+    println!("!");
 }
