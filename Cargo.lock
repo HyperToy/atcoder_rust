@@ -1360,6 +1360,7 @@ dependencies = [
 name = "abc300"
 version = "0.1.0"
 dependencies = [
+ "ac-library-rs",
  "itertools 0.11.0",
  "proconio",
 ]
@@ -1736,6 +1737,15 @@ dependencies = [
 name = "agc063"
 version = "0.1.0"
 dependencies = [
+ "itertools 0.11.0",
+ "proconio",
+]
+
+[[package]]
+name = "arc119"
+version = "0.1.0"
+dependencies = [
+ "ac-library-rs",
  "itertools 0.11.0",
  "proconio",
 ]
