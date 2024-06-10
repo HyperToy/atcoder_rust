@@ -1,114 +1,141 @@
-use std::vec;
-
+use itertools::Itertools;
 use proconio::{input, marker::Usize1};
 
-fn add_edge(g: &mut Vec<Vec<usize>>, rg: &mut Vec<Vec<usize>>, from: usize, to: usize) {
-    g[from].push(to);
-    rg[to].push(from);
+#[derive(Clone)]
+#[allow(dead_code)]
+struct Edge {
+    from: usize,
+    to: usize,
+    val: i64,
 }
-
-fn dfs(v: usize, g: &Vec<Vec<usize>>, seen: &mut Vec<bool>, vs: &mut Vec<usize>) {
-    seen[v] = true;
-    for &u in &g[v] {
-        if !seen[u] {
-            dfs(u, g, seen, vs);
-        }
-    }
-    vs.push(v); // 帰りがけ順に番号をつける
-}
-
-fn rdfs(v: usize, rg: &Vec<Vec<usize>>, seen: &mut Vec<bool>, cmp: &mut Vec<usize>, k: usize) {
-    seen[v] = true;
-    cmp[v] = k;
-    for &u in &rg[v] {
-        if !seen[u] {
-            rdfs(u, rg, seen, cmp, k);
-        }
+impl Edge {
+    fn new(from: usize, to: usize, val: i64) -> Self {
+        Self { from, to, val }
     }
 }
-
-// 強連結成分の個数を返す。
-fn scc(n: usize, g: &Vec<Vec<usize>>, rg: &Vec<Vec<usize>>) -> (usize, Vec<usize>) {
-    let mut seen = vec![false; n];
-    let mut vs: Vec<usize> = Vec::new();
-
-    for v in 0..n {
-        if !seen[v] {
-            dfs(v, g, &mut seen, &mut vs);
+struct CycleDetection {
+    g: Vec<Edge>,
+    seen: Vec<bool>,
+    finished: Vec<bool>,
+    history: Vec<usize>,
+}
+impl CycleDetection {
+    fn new(g: Vec<Edge>) -> Self {
+        let l = g.len();
+        let seen = vec![false; l];
+        let finished = vec![false; l];
+        let history = Vec::new();
+        Self {
+            g,
+            seen,
+            finished,
+            history,
         }
     }
 
-    seen.fill(false);
-    let mut cmp = vec![0; n];
-    let mut k = 0;
-    for &v in vs.iter().rev() {
-        if !seen[v] {
-            rdfs(v, rg, &mut seen, &mut cmp, k);
-            k += 1;
+    // return the vertex where cycle is detected
+    fn search(&mut self, mut v: usize) -> Option<usize> {
+        loop {
+            self.seen[v] = true;
+            self.history.push(v);
+            v = self.g[v].to;
+
+            if self.finished[v] {
+                v = std::usize::MAX;
+                break;
+            }
+            if self.seen[v] {
+                break;
+            }
+        }
+        self.pop_history();
+        if v == std::usize::MAX {
+            None
+        } else {
+            Some(v)
         }
     }
-    (k, cmp)
+
+    // pop history
+    fn pop_history(&mut self) {
+        while let Some(v) = self.history.pop() {
+            self.finished[v] = true;
+        }
+    }
+
+    // reconstruct
+    fn reconstruct(&self, pos: usize) -> Vec<Edge> {
+        //reconstruct the cycle
+        let mut cycle = Vec::new();
+        let mut v = pos;
+        loop {
+            cycle.push(self.g[v].clone());
+            v = self.g[v].to;
+            if v == pos {
+                break;
+            }
+        }
+        cycle
+    }
+
+    // find all cycle
+    fn detect_all(&mut self) -> Vec<Vec<Edge>> {
+        let mut res = Vec::new();
+        for v in 0..self.g.len() {
+            if self.finished[v] {
+                continue;
+            }
+            if let Some(pos) = self.search(v) {
+                let cycle = self.reconstruct(pos);
+                if cycle.len() > 0 {
+                    res.push(cycle)
+                }
+            }
+        }
+        res
+    }
 }
 
+fn rec(v: usize, a: &Vec<usize>, dp: &mut Vec<Option<usize>>) -> usize {
+    if let Some(x) = dp[v] {
+        x
+    } else {
+        let x = rec(a[v], a, dp) + 1;
+        dp[v] = Some(x);
+        x
+    }
+}
+
+// functional graph
 fn main() {
     input! {
         n: usize,
         a: [Usize1; n],
     }
-    let mut g = vec![Vec::new(); n];
-    let mut rg = vec![Vec::new(); n];
 
-    for (from, to) in a.into_iter().enumerate() {
-        add_edge(&mut g, &mut rg, from, to);
+    let g = a
+        .iter()
+        .enumerate()
+        .map(|(from, &to)| Edge::new(from, to, 1))
+        .collect_vec();
+
+    let mut cycle_detection = CycleDetection::new(g.clone());
+    let cycles = cycle_detection.detect_all();
+
+    let mut dp = vec![None; n];
+    for cycle in &cycles {
+        let l = cycle.len();
+        for e in cycle {
+            dp[e.to] = Some(l);
+        }
     }
-
-    let (k, cmp) = scc(n, &g, &rg);
-
-    // 強連結成分を潰して 1頂点にしたグラフ
-    let mut g = vec![Vec::new(); k];
-    let mut rg2 = vec![Vec::new(); k];
-    for i in 0..n {
-        for &v in &rg[i] {
-            if cmp[i] != cmp[v] {
-                g[cmp[i]].push(cmp[v]);
-                rg2[cmp[v]].push(cmp[i]);
+    for v in 0..n {
+        match dp[v] {
+            Some(_) => (),
+            None => {
+                rec(v, &a, &mut dp);
             }
         }
     }
-
-    let mut answer = 0;
-
-    let mut size = vec![0; k]; // 各強連結成分のサイズ
-    for i in 0..n {
-        size[cmp[i]] += 1;
-    }
-    for &x in &size {
-        answer += x * (x - 1);
-    }
-
-    // 入次数が 0 の頂点を探す
-    let mut roots = Vec::new();
-    for u in 0..k {
-        if rg2[u].len() == 0 {
-            roots.push(u);
-        }
-    }
-    for u in roots {
-        dfs2(&mut answer, &mut g, &size, u);
-    }
-
-    // 自分自身へは行ける
-    answer += n;
-
-    println!("{}", answer);
-}
-
-fn dfs2(answer: &mut usize, g: &Vec<Vec<usize>>, size: &Vec<usize>, pos: usize) -> usize {
-    let mut res = 1;
-    for &v in &g[pos] {
-        let now = dfs2(answer, g, size, v);
-        *answer += size[pos] * now;
-        res += now;
-    }
-    res
+    println!("{}", dp.into_iter().map(|o| o.unwrap_or(0)).sum::<usize>());
 }
