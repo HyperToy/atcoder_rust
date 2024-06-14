@@ -2,31 +2,36 @@ use itertools::Itertools;
 use proconio::input;
 
 const N: usize = 3;
+const ALL: f64 = 362880.; // 9!
+
 fn main() {
     input! {
         c: [[u32; N;]; N],
     }
-    let n = 362880.; // 9!
     println!(
         "{}",
         (0..N * N)
             .permutations(N * N)
-            .map(|order| order.iter().map(|x| (x / N, x % N)).collect_vec())
-            .filter(|order| !disappointed(&c, order))
+            .filter(|order| !order
+                .iter()
+                .map(|x| (x / N, x % N))
+                .scan([[false; N]; N], |seen, (i, j)| {
+                    seen[i][j] = true;
+                    Some((seen.clone(), (i, j)))
+                })
+                .any(|(seen, (i, j))| {
+                    let (i1, i2) = ((i + 1) % N, (i + 2) % N);
+                    let (j1, j2) = ((j + 1) % N, (j + 2) % N);
+                    // 縦, 横, 斜め
+                    check(&seen, &c, (i1, j), (i2, j))
+                        || check(&seen, &c, (i, j1), (i, j2))
+                        || i == j && check(&seen, &c, (i1, j1), (i2, j2))
+                        || i == N - j - 1 && check(&seen, &c, (i2, j1), (i1, j2))
+                }))
             .count() as f64
-            / n
+            / ALL
     );
 }
-fn disappointed(c: &Vec<Vec<u32>>, order: &Vec<(usize, usize)>) -> bool {
-    let mut seen = [[false; N]; N];
-    order.iter().any(|&(i, j)| {
-        let (i1, j1) = ((i + 1) % N, (j + 1) % N);
-        let (i2, j2) = ((i + 2) % N, (j + 2) % N);
-        seen[i][j] = true;
-        // 縦, 横, 斜め
-        (seen[i1][j] && seen[i2][j] && c[i1][j] == c[i2][j])
-            || (seen[i][j1] && seen[i][j2] && c[i][j1] == c[i][j2])
-            || (i == j && seen[i1][j1] && seen[i2][j2] && c[i1][j1] == c[i2][j2])
-            || (i == N - j - 1 && seen[i2][j1] && seen[i1][j2] && c[i2][j1] == c[i1][j2])
-    })
+fn check(seen: &[[bool; N]; N], c: &Vec<Vec<u32>>, p: (usize, usize), q: (usize, usize)) -> bool {
+    seen[p.0][p.1] && seen[q.0][q.1] && c[p.0][p.1] == c[q.0][q.1]
 }
