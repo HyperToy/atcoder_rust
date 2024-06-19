@@ -1,6 +1,7 @@
 {
     "editor.formatOnSave": true,
     "cSpell.words": [
+        "aoki",
         "atcoder",
         "Deque",
         "Fenwick",
@@ -10,6 +11,7 @@
         "procon",
         "proconio",
         "segtree",
+        "takahashi",
         "tessoku",
         "timelimit"
     ],
