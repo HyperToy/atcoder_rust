@@ -46,6 +46,7 @@ name = "abc306-g"
 path = "src/bin/g.rs"
 
 [dependencies]
+ac-library-rs="0.1.1"
 proconio="=0.4.5"
 itertools="=0.11.0"
 

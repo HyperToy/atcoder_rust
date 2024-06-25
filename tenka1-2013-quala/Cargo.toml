@@ -16,7 +16,9 @@ e = { name = "tenka1-2013-quala-e", problem = "https://atcoder.jp/contests/tenka
 
 # dependencies added to new project
 [dependencies]
-proconio = "*"
+ac-library-rs="0.1.1"
+proconio="=0.4.5"
+itertools="=0.11.0"
 
 [profile.release]
 lto = true
