@@ -14,16 +14,27 @@ fn main() {
     let total = values.iter().sum::<usize>();
     // costs[i] で values[i] が得られる
     // dp[i][j] := 選挙区i までで j議席取るのに必要な最小コスト
-    let mut dp = vec![vec![std::usize::MAX / 2; total + 1]; n];
-    dp[0][0] = 0;
-    dp[0][values[0]] = costs[0];
+    let mut dp = vec![vec![None; total + 1]; n];
+    dp[0][0] = Some(0);
+    dp[0][values[0]] = Some(costs[0]);
     for i in 1..n {
         for j in 0..=total {
-            dp[i][j] = dp[i][j].min(dp[i - 1][j]);
+            dp[i][j] = dp[i][j].into_iter().chain(dp[i - 1][j]).min();
             if j >= values[i] {
-                dp[i][j] = dp[i][j].min(dp[i - 1][j - values[i]] + costs[i]);
+                dp[i][j] = dp[i][j]
+                    .into_iter()
+                    .chain(dp[i - 1][j - values[i]].map(|c| c + costs[i]))
+                    .min();
             }
         }
     }
-    println!("{}", dp[n - 1].iter().skip((total + 1) / 2).min().unwrap());
+    println!(
+        "{}",
+        dp[n - 1]
+            .iter()
+            .skip((total + 1) / 2)
+            .flatten()
+            .min()
+            .unwrap()
+    );
 }
