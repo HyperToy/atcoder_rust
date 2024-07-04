@@ -2,7 +2,13 @@ use proconio::input;
 
 fn main() {
     input! {
-        //
+        n: usize,
+        s: [String; n],
     }
-    todo!();
+    println!(
+        "{}",
+        s.into_iter()
+            .filter(|s| s == &"Takahashi".to_string())
+            .count()
+    )
 }
