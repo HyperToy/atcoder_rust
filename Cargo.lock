@@ -1929,6 +1929,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "abc358"
+version = "0.1.0"
+dependencies = [
+ "ac-library-rs",
+ "itertools 0.11.0",
+ "proconio",
+]
+
+[[package]]
 name = "abc359"
 version = "0.1.0"
 dependencies = [
@@ -2044,6 +2053,15 @@ dependencies = [
 
 [[package]]
 name = "arc168"
+version = "0.1.0"
+dependencies = [
+ "ac-library-rs",
+ "itertools 0.11.0",
+ "proconio",
+]
+
+[[package]]
+name = "arc169"
 version = "0.1.0"
 dependencies = [
  "ac-library-rs",
