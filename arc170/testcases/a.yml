@@ -18,6 +18,69 @@ cases:
       BA
     out: |
       -1
+  - name: original1
+    in: |
+      2
+      AA
+      AA
+    out: |
+      0
+  - name: original2
+    in: |
+      2
+      AA
+      AB
+    out: |
+      1
+  - name: original3
+    in: |
+      2
+      BB
+      AB
+    out: |
+      1
+  - name: original4
+    in: |
+      5
+      BABAA
+      BBBAA
+    out: |
+      -1
+  - name: original5
+    in: |
+      3
+      AAA
+      ABB
+    out: |
+      2
+  - name: original6
+    in: |
+      3
+      BAA
+      ABB
+    out: |
+      2
+  - name: original7
+    in: |
+      5
+      AAAAA
+      BBAAA
+    out: |
+      -1
+  - name: original8
+    in: |
+      5
+      AAAAA
+      AAAAA
+    out: |
+      0
+  - name: original9
+    in: |
+      12
+      BAAAAABBBBBA
+      ABBBBBAAAAAB
+    out: |
+      10
 
 extend:
   - type: Text
