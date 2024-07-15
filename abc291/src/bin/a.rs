@@ -1,8 +1,12 @@
-use proconio::input;
+use itertools::Itertools;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        //
+        s: Chars
     }
-    todo!();
+    println!(
+        "{}",
+        1 + s.into_iter().find_position(|c| c.is_uppercase()).unwrap().0
+    );
 }
