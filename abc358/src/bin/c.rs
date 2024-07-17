@@ -23,15 +23,10 @@ fn main() {
     println!(
         "{}",
         (0..1usize << n)
-            .filter(|&msk| {
-                let mut any = 0;
-                for i in 0..n {
-                    if (msk >> i) & 1 == 1 {
-                        any |= s[i];
-                    }
-                }
-                any.count_ones() == m
-            })
+            .filter(|&msk| (0..n)
+                .fold(0, |any, i| any | if (msk >> i) & 1 == 1 { s[i] } else { 0 })
+                .count_ones()
+                == m)
             .map(|msk| msk.count_ones())
             .min()
             .unwrap()
