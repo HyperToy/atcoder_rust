@@ -2,7 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-        //
+        a: usize, b: usize,
     }
-    todo!();
+    println!("{}", if a == b / 2 { "Yes" } else { "No" });
 }
