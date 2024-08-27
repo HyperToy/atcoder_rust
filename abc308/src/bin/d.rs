@@ -20,28 +20,23 @@ fn main() {
     }
     let start = 0;
     let goal = n - 1;
-    let mut dist = vec![std::u32::MAX; n];
+    let mut dist = vec![None; n];
     let mut q = VecDeque::new();
-    dist[start] = 0;
+    dist[start] = Some(0);
     q.push_back(start);
     while let Some(u) = q.pop_front() {
+        let nd = dist[u].unwrap() + 1;
         for &v in &g[u] {
-            if dist[v] <= dist[u] + 1 {
+            if dist[v].is_some_and(|d| d <= nd) {
                 continue;
             }
-            dist[v] = dist[u] + 1;
+            dist[v] = Some(nd);
             q.push_back(v);
         }
     }
-    println!(
-        "{}",
-        if dist[goal] < std::u32::MAX {
-            "Yes"
-        } else {
-            "No"
-        }
-    );
+    println!("{}", if dist[goal].is_some() { "Yes" } else { "No" });
 }
+
 fn neighbors(i: usize, j: usize, h: usize, w: usize) -> Vec<(usize, usize)> {
     [(0, 1), (1, 0), (0, -1), (-1, 0)]
         .iter()
