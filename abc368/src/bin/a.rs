@@ -8,9 +8,6 @@ fn main() {
     }
     println!(
         "{}",
-        a.iter()
-            .dropping(n - k)
-            .chain(a.iter().take(n - k))
-            .join(" ")
+        a.iter().skip(n - k).chain(a.iter().take(n - k)).join(" ")
     );
 }

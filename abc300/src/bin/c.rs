@@ -13,7 +13,7 @@ fn main() {
             if s[i][j] != '#' {
                 continue;
             }
-            for l in 1..=n {
+            for l in 1.. {
                 let nbs = neighbors(i, j, l, h, w);
                 if nbs.len() != 4 || nbs.iter().any(|&(y, x)| s[y][x] != '#') {
                     answer[l - 1] += 1;
