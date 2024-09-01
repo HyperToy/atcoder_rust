@@ -6,14 +6,19 @@ fn main() {
         n: usize, q: usize,
         queries: [(Usize1, Usize1, i64); q],
     }
-    let mut answer = vec![];
     let mut dsu = WeightedDsu::new(n);
-    for (i, &(a, b, d)) in queries.iter().enumerate() {
-        if dsu.merge(a, b, d) {
-            answer.push(i);
-        }
-    }
-    println!("{}", answer.iter().map(|&i| i + 1).join(" "));
+    println!(
+        "{}",
+        queries
+            .iter()
+            .enumerate()
+            .filter_map(|(i, &(a, b, d))| if dsu.merge(a, b, d) {
+                Some(i + 1)
+            } else {
+                None
+            })
+            .join(" ")
+    );
 }
 
 struct WeightedDsu {
