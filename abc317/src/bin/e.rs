@@ -110,3 +110,41 @@ fn neighbors(i: usize, j: usize, h: usize, w: usize) -> Vec<(usize, usize)> {
 fn inside(i: isize, j: isize, h: usize, w: usize) -> bool {
     0 <= i && i < h as isize && 0 <= j && j < w as isize
 }
+
+/* こちらでも通った。 (TLE は BFS が原因だった。)
+fn convert(grid: Vec<Vec<char>>) -> Vec<Vec<char>> {
+    let h = grid.len();
+    let w = grid[0].len();
+    let mut res = grid.clone();
+    for i in 0..h {
+        for j in 0..w {
+            match grid[i][j] {
+                '>' => spread(&mut res, (i, j), (0, 1)),
+                'v' => spread(&mut res, (i, j), (1, 0)),
+                '<' => spread(&mut res, (i, j), (0, -1)),
+                '^' => spread(&mut res, (i, j), (-1, 0)),
+                'S' | 'G' => res[i][j] = '.',
+                _ => (),
+            }
+        }
+    }
+    res
+}
+fn spread(grid: &mut Vec<Vec<char>>, from: (usize, usize), dir: (isize, isize)) {
+    let h = grid.len();
+    let w = grid[0].len();
+    let (i, j) = from;
+    let (dy, dx) = dir;
+    for k in 1.. {
+        let (ni, nj) = (i as isize + dy * k, j as isize + dx * k);
+        if !inside(ni, nj, h, w) {
+            break;
+        }
+        let (ni, nj) = (ni as usize, nj as usize);
+        if ['#', '>', 'v', '<', '^'].contains(&grid[ni][nj]) {
+            break;
+        }
+        grid[ni][nj] = '!';
+    }
+}
+ */
