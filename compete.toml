@@ -22,10 +22,7 @@ test-suite = "{{ manifest_dir }}/testcases/{{ bin_alias }}.yml"
 
 [template]
 src = '''
-use proconio::*;
-// use proconio::marker::Chars;
-// use proconio::marker::Bytes;
-// use itertools::Itertools;
+use proconio::input;
 
 fn main() {
     input! {
@@ -46,8 +43,9 @@ edition = "2018"
 #opt-level = 3
 #'''
 dependencies = '''
-proconio = "*"
-itertools = "=0.9.0"
+ac-library-rs="0.1.1"
+itertools="=0.11.0"
+proconio="=0.4.5"
 '''
 dev-dependencies = '''
 #atcoder-202004-lock = { git = "https://github.com/qryxip/atcoder-202004-lock" }
@@ -106,3 +104,8 @@ path = "./{{ contest }}"
 #kind = "command"
 #args = ["cargo", "equip", "--exclude-atcoder-crates", "--resolve-cfgs", "--remove", "docs", "--minify", "libs", "--rustfmt", "--check", "--bin", "{{ bin_name }}"]
 ##language_id = ""
+
+[submit]
+kind = "file"
+path = "{{ src_path }}"
+language_id = "5054" # Atcoder 202301

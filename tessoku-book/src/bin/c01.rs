@@ -1,9 +1,8 @@
 use proconio::*;
-// use itertools::Itertools;
 
 fn main() {
     input! {
-        //
+        n: usize,
     }
-    todo!();
+    println!("{}", n * 11 / 10);
 }

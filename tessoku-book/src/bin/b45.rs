@@ -1,9 +1,8 @@
 use proconio::*;
-// use itertools::Itertools;
 
 fn main() {
     input! {
-        //
+        a: i64, b: i64, c: i64,
     }
-    todo!();
+    println!("{}", if a + b + c == 0 { "Yes" } else { "No" });
 }

@@ -1,0 +1,43 @@
+[package]
+name = "arc167"
+version = "0.1.0"
+edition = "2018"
+
+[package.metadata.cargo-compete.bin]
+arc167-a = { alias = "a", problem = "https://atcoder.jp/contests/arc167/tasks/arc167_a" }
+arc167-b = { alias = "b", problem = "https://atcoder.jp/contests/arc167/tasks/arc167_b" }
+arc167-c = { alias = "c", problem = "https://atcoder.jp/contests/arc167/tasks/arc167_c" }
+arc167-d = { alias = "d", problem = "https://atcoder.jp/contests/arc167/tasks/arc167_d" }
+arc167-e = { alias = "e", problem = "https://atcoder.jp/contests/arc167/tasks/arc167_e" }
+arc167-f = { alias = "f", problem = "https://atcoder.jp/contests/arc167/tasks/arc167_f" }
+
+[[bin]]
+name = "arc167-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "arc167-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "arc167-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "arc167-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "arc167-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "arc167-f"
+path = "src/bin/f.rs"
+
+[dependencies]
+ac-library-rs="0.1.1"
+proconio="=0.4.5"
+itertools="=0.11.0"
+
+[dev-dependencies]

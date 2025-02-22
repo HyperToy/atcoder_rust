@@ -21,7 +21,9 @@ practicea = { name = "abs-practicea", problem = "https://atcoder.jp/contests/abs
 
 # dependencies added to new project
 [dependencies]
-proconio = "0.4.3"
+ac-library-rs="0.1.1"
+proconio="=0.4.5"
+itertools="=0.11.0"0.4.3"
 
 [profile.release]
 lto = true

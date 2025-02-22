@@ -1,14 +1,71 @@
 {
     "editor.formatOnSave": true,
     "cSpell.words": [
+        "aoki",
         "atcoder",
         "Deque",
+        "Fenwick",
         "itertools",
+        "Polyomino",
         "powf",
+        "procon",
         "proconio",
-        "tessoku"
+        "segtree",
+        "takahashi",
+        "tessoku",
+        "timelimit"
     ],
-    "rust-analyzer.linkedProjects": [
-        "abc305/Cargo.toml",
-    ]
+    "accessibility.signals.lineHasError": {
+        "sound": "off",
+        "announcement": "auto"
+    },
+    "accessibility.signals.positionHasError": {
+        "sound": "off",
+        "announcement": "auto"
+    },
+    "accessibility.signals.lineHasWarning": {
+        "sound": "off",
+        "announcement": "auto"
+    },
+    "accessibility.signals.positionHasWarning": {
+        "sound": "off",
+        "announcement": "auto"
+    },
+    "accessibility.signals.diffLineInserted": {
+        "sound": "off"
+    },
+    "accessibility.signals.diffLineDeleted": {
+        "sound": "off"
+    },
+    "accessibility.signals.diffLineModified": {
+        "sound": "off"
+    },
+    "accessibility.signals.lineHasFoldedArea": {
+        "sound": "off",
+        "announcement": "auto"
+    },
+    // "rust-analyzer.linkedProjects": [
+    //     "tessoku-book/Cargo.toml",
+    //     "./abc105/Cargo.toml",
+    //     "./abc297/Cargo.toml",
+    //     "./abc299/Cargo.toml",
+    //     "./abc304/Cargo.toml",
+    //     "./abc307/Cargo.toml",
+    //     "./abc309/Cargo.toml",
+    //     "./abc310/Cargo.toml",
+    //     "./abc311/Cargo.toml",
+    //     "./abc312/Cargo.toml",
+    //     "./abc320/Cargo.toml",
+    //     "./abc321/Cargo.toml",
+    //     "./abc322/Cargo.toml",
+    //     "./abc323/Cargo.toml",
+    //     "./abc324/Cargo.toml",
+    //     "./abc325/Cargo.toml",
+    //     "./abc326/Cargo.toml",
+    //     "./abc327/Cargo.toml",
+    //     "./abc328/Cargo.toml",
+    //     "./abc329/Cargo.toml",
+    //     "./abc330/Cargo.toml",
+    //     "./joi2008yo/Cargo.toml",
+    // ],
 }

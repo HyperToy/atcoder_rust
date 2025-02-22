@@ -1,9 +1,13 @@
 use proconio::*;
-// use itertools::Itertools;
 
 fn main() {
     input! {
-        //
+        n: usize,
     }
-    todo!();
+    println!(
+        "{}",
+        format!("{:010b}", n - 1)
+            .replace("0", "4")
+            .replace("1", "7")
+    );
 }

@@ -1,3 +1,4 @@
+use itertools::Itertools;
 use proconio::*;
 
 fn main() {
@@ -8,7 +9,7 @@ fn main() {
     }
     println!(
         "{}",
-        if p.iter().any(|a| q.iter().any(|b| a + b == k)) {
+        if p.iter().cartesian_product(q).any(|(a, b)| a + b == k) {
             "Yes"
         } else {
             "No"

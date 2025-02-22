@@ -1,0 +1,43 @@
+[package]
+name = "abc177"
+version = "0.1.0"
+edition = "2018"
+
+[package.metadata.cargo-compete.bin]
+abc177-a = { alias = "a", problem = "https://atcoder.jp/contests/abc177/tasks/abc177_a" }
+abc177-b = { alias = "b", problem = "https://atcoder.jp/contests/abc177/tasks/abc177_b" }
+abc177-c = { alias = "c", problem = "https://atcoder.jp/contests/abc177/tasks/abc177_c" }
+abc177-d = { alias = "d", problem = "https://atcoder.jp/contests/abc177/tasks/abc177_d" }
+abc177-e = { alias = "e", problem = "https://atcoder.jp/contests/abc177/tasks/abc177_e" }
+abc177-f = { alias = "f", problem = "https://atcoder.jp/contests/abc177/tasks/abc177_f" }
+
+[[bin]]
+name = "abc177-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "abc177-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "abc177-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "abc177-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "abc177-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "abc177-f"
+path = "src/bin/f.rs"
+
+[dependencies]
+ac-library-rs="0.1.1"
+proconio="=0.4.5"
+itertools="=0.11.0"
+
+[dev-dependencies]

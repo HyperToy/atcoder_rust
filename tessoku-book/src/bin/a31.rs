@@ -1,9 +1,8 @@
 use proconio::*;
-// use itertools::Itertools;
 
 fn main() {
     input! {
-        //
+        n: u64,
     }
-    todo!();
+    println!("{}", n / 3 + n / 5 - n / 15);
 }

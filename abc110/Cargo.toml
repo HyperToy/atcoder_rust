@@ -1,0 +1,33 @@
+[package]
+name = "abc110"
+version = "0.1.0"
+edition = "2018"
+
+[package.metadata.cargo-compete.bin]
+abc110-a = { alias = "a", problem = "https://atcoder.jp/contests/abc110/tasks/abc110_a" }
+abc110-b = { alias = "b", problem = "https://atcoder.jp/contests/abc110/tasks/abc110_b" }
+abc110-c = { alias = "c", problem = "https://atcoder.jp/contests/abc110/tasks/abc110_c" }
+abc110-d = { alias = "d", problem = "https://atcoder.jp/contests/abc110/tasks/abc110_d" }
+
+[[bin]]
+name = "abc110-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "abc110-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "abc110-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "abc110-d"
+path = "src/bin/d.rs"
+
+[dependencies]
+ac-library-rs="0.1.1"
+proconio="=0.4.5"
+itertools="=0.11.0"
+
+[dev-dependencies]

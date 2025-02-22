@@ -3,7 +3,10 @@ use proconio::*;
 
 fn main() {
     input! {
-        //
+        n: usize,
+        mut a: [i32; n],
     }
-    todo!();
+    a.sort();
+    a.reverse();
+    println!("{}", a[0] + a[1]);
 }

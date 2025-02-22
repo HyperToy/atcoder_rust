@@ -1,0 +1,14 @@
+use itertools::Itertools;
+use proconio::{input, marker::Chars};
+
+fn main() {
+    input! {
+        s: Chars
+    }
+    println!(
+        "{}",
+        s.iter()
+            .filter(|c| !['a', 'e', 'i', 'o', 'u'].contains(c))
+            .join("")
+    )
+}

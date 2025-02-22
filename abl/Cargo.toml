@@ -1,0 +1,43 @@
+[package]
+name = "abl"
+version = "0.1.0"
+edition = "2018"
+
+[package.metadata.cargo-compete.bin]
+abl-a = { alias = "a", problem = "https://atcoder.jp/contests/abl/tasks/abl_a" }
+abl-b = { alias = "b", problem = "https://atcoder.jp/contests/abl/tasks/abl_b" }
+abl-c = { alias = "c", problem = "https://atcoder.jp/contests/abl/tasks/abl_c" }
+abl-d = { alias = "d", problem = "https://atcoder.jp/contests/abl/tasks/abl_d" }
+abl-e = { alias = "e", problem = "https://atcoder.jp/contests/abl/tasks/abl_e" }
+abl-f = { alias = "f", problem = "https://atcoder.jp/contests/abl/tasks/abl_f" }
+
+[[bin]]
+name = "abl-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "abl-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "abl-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "abl-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "abl-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "abl-f"
+path = "src/bin/f.rs"
+
+[dependencies]
+ac-library-rs="0.1.1"
+proconio="=0.4.5"
+itertools="=0.11.0"
+
+[dev-dependencies]

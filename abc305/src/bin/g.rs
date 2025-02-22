@@ -1,7 +1,4 @@
-use proconio::*;
-// use proconio::marker::Chars;
-// use proconio::marker::Bytes;
-// use itertools::Itertools;
+use proconio::input;
 
 fn main() {
     input! {
