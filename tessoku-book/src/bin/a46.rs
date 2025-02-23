@@ -80,8 +80,8 @@ fn annealing(
                 break;
             }
         }
-        let l: usize = rng.gen_range(1, input.city_count);
-        let r: usize = rng.gen_range(l, input.city_count);
+        let l: usize = rng.random_range(1..input.city_count);
+        let r: usize = rng.random_range(l..input.city_count);
 
         let current_cost_partial = input.cities[solution.city_order[l]]
             .calc_sq_dist(&input.cities[solution.city_order[l - 1]])
