@@ -1,4 +1,5 @@
 [workspace]
+exclude = []
 members = [
     "abc021",
     "abc078",
@@ -257,4 +258,3 @@ members = [
     "tessoku-book",
     "wtf22-day1-open",
 ]
-exclude = []
