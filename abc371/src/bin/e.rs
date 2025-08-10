@@ -1,3 +1,4 @@
+use itertools::Itertools;
 use proconio::{input, marker::Usize1};
 
 fn main() {
@@ -5,21 +6,20 @@ fn main() {
         n: usize,
         a: [Usize1; n],
     }
-    let mut poss = vec![vec![]; n];
-    for (i, &a) in a.iter().enumerate() {
-        poss[a].push(i);
-    }
-    let mut ans = 0;
-    for i in 0..n {
-        for j in 0..poss[i].len() {
-            let now = poss[i][j];
-            let next = if j + 1 == poss[i].len() {
-                n
-            } else {
-                poss[i][j + 1]
-            };
-            ans += (now + 1) * (next - now);
-        }
-    }
-    println!("{}", ans);
+    let answer = a
+        .iter()
+        .enumerate()
+        .map(|(i, &a)| (a, i))
+        .sorted_by_key(|(a, _)| *a)
+        .group_by(|(a, _)| *a)
+        .into_iter()
+        .map(|(_, positions)| positions.map(|(_, i)| i).chain(std::iter::once(n)))
+        .map(|positions| {
+            positions
+                .tuple_windows()
+                .map(|(now, next)| (now + 1) * (next - now))
+        })
+        .flatten()
+        .sum::<usize>();
+    println!("{}", answer);
 }
