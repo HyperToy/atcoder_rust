@@ -106,6 +106,6 @@ path = "./{{ contest }}"
 ##language_id = ""
 
 [submit]
-kind = "file"
-path = "{{ src_path }}"
-language_id = "5054" # Atcoder 202301
+kind        = "file"
+language_id = "5054"           # Atcoder 202301
+path        = "{{ src_path }}"
