@@ -1,0 +1,48 @@
+[package]
+name = "abc415"
+version = "0.1.0"
+edition = "2018"
+
+[package.metadata.cargo-compete.bin]
+abc415-a = { alias = "a", problem = "https://atcoder.jp/contests/abc415/tasks/abc415_a" }
+abc415-b = { alias = "b", problem = "https://atcoder.jp/contests/abc415/tasks/abc415_b" }
+abc415-c = { alias = "c", problem = "https://atcoder.jp/contests/abc415/tasks/abc415_c" }
+abc415-d = { alias = "d", problem = "https://atcoder.jp/contests/abc415/tasks/abc415_d" }
+abc415-e = { alias = "e", problem = "https://atcoder.jp/contests/abc415/tasks/abc415_e" }
+abc415-f = { alias = "f", problem = "https://atcoder.jp/contests/abc415/tasks/abc415_f" }
+abc415-g = { alias = "g", problem = "https://atcoder.jp/contests/abc415/tasks/abc415_g" }
+
+[[bin]]
+name = "abc415-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "abc415-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "abc415-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "abc415-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "abc415-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "abc415-f"
+path = "src/bin/f.rs"
+
+[[bin]]
+name = "abc415-g"
+path = "src/bin/g.rs"
+
+[dependencies]
+ac-library-rs="0.1.1"
+itertools="=0.11.0"
+proconio="=0.4.5"
+
+[dev-dependencies]
