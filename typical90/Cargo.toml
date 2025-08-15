@@ -1,112 +1,111 @@
 [package]
-name = "typical90"
-version = "0.1.0"
 edition = "2021"
+name    = "typical90"
+version = "0.1.0"
 
 [package.metadata.cargo-compete]
 config = "../compete.toml"
 
 [package.metadata.cargo-compete.bin]
-001 = { name = "typical90-001", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-002 = { name = "typical90-002", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-003 = { name = "typical90-003", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-004 = { name = "typical90-004", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-005 = { name = "typical90-005", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-006 = { name = "typical90-006", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-007 = { name = "typical90-007", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-008 = { name = "typical90-008", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-009 = { name = "typical90-009", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-010 = { name = "typical90-010", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-011 = { name = "typical90-011", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-012 = { name = "typical90-012", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-013 = { name = "typical90-013", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-014 = { name = "typical90-014", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-015 = { name = "typical90-015", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-016 = { name = "typical90-016", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-017 = { name = "typical90-017", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-018 = { name = "typical90-018", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-019 = { name = "typical90-019", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-020 = { name = "typical90-020", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-021 = { name = "typical90-021", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-022 = { name = "typical90-022", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-023 = { name = "typical90-023", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-024 = { name = "typical90-024", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-025 = { name = "typical90-025", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-026 = { name = "typical90-026", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-027 = { name = "typical90-027", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-028 = { name = "typical90-028", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-029 = { name = "typical90-029", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-030 = { name = "typical90-030", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-031 = { name = "typical90-031", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-032 = { name = "typical90-032", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-033 = { name = "typical90-033", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-034 = { name = "typical90-034", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-035 = { name = "typical90-035", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-036 = { name = "typical90-036", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-037 = { name = "typical90-037", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-038 = { name = "typical90-038", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-039 = { name = "typical90-039", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-040 = { name = "typical90-040", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-041 = { name = "typical90-041", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-042 = { name = "typical90-042", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-043 = { name = "typical90-043", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-044 = { name = "typical90-044", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-045 = { name = "typical90-045", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-046 = { name = "typical90-046", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-047 = { name = "typical90-047", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-048 = { name = "typical90-048", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-049 = { name = "typical90-049", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-050 = { name = "typical90-050", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-051 = { name = "typical90-051", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-052 = { name = "typical90-052", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-053 = { name = "typical90-053", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-054 = { name = "typical90-054", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-055 = { name = "typical90-055", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-056 = { name = "typical90-056", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-057 = { name = "typical90-057", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-058 = { name = "typical90-058", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-059 = { name = "typical90-059", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-060 = { name = "typical90-060", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-061 = { name = "typical90-061", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-062 = { name = "typical90-062", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-063 = { name = "typical90-063", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-064 = { name = "typical90-064", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-065 = { name = "typical90-065", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-066 = { name = "typical90-066", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-067 = { name = "typical90-067", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-068 = { name = "typical90-068", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-069 = { name = "typical90-069", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-070 = { name = "typical90-070", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-071 = { name = "typical90-071", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-072 = { name = "typical90-072", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-073 = { name = "typical90-073", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-074 = { name = "typical90-074", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-075 = { name = "typical90-075", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-076 = { name = "typical90-076", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-077 = { name = "typical90-077", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-078 = { name = "typical90-078", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-079 = { name = "typical90-079", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-080 = { name = "typical90-080", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-081 = { name = "typical90-081", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-082 = { name = "typical90-082", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-083 = { name = "typical90-083", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-084 = { name = "typical90-084", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-085 = { name = "typical90-085", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-086 = { name = "typical90-086", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-087 = { name = "typical90-087", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-088 = { name = "typical90-088", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-089 = { name = "typical90-089", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
-090 = { name = "typical90-090", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>"}
+001 = { name = "typical90-001", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+002 = { name = "typical90-002", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+003 = { name = "typical90-003", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+004 = { name = "typical90-004", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+005 = { name = "typical90-005", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+006 = { name = "typical90-006", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+007 = { name = "typical90-007", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+008 = { name = "typical90-008", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+009 = { name = "typical90-009", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+010 = { name = "typical90-010", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+011 = { name = "typical90-011", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+012 = { name = "typical90-012", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+013 = { name = "typical90-013", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+014 = { name = "typical90-014", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+015 = { name = "typical90-015", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+016 = { name = "typical90-016", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+017 = { name = "typical90-017", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+018 = { name = "typical90-018", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+019 = { name = "typical90-019", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+020 = { name = "typical90-020", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+021 = { name = "typical90-021", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+022 = { name = "typical90-022", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+023 = { name = "typical90-023", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+024 = { name = "typical90-024", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+025 = { name = "typical90-025", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+026 = { name = "typical90-026", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+027 = { name = "typical90-027", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+028 = { name = "typical90-028", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+029 = { name = "typical90-029", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+030 = { name = "typical90-030", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+031 = { name = "typical90-031", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+032 = { name = "typical90-032", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+033 = { name = "typical90-033", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+034 = { name = "typical90-034", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+035 = { name = "typical90-035", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+036 = { name = "typical90-036", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+037 = { name = "typical90-037", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+038 = { name = "typical90-038", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+039 = { name = "typical90-039", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+040 = { name = "typical90-040", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+041 = { name = "typical90-041", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+042 = { name = "typical90-042", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+043 = { name = "typical90-043", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+044 = { name = "typical90-044", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+045 = { name = "typical90-045", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+046 = { name = "typical90-046", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+047 = { name = "typical90-047", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+048 = { name = "typical90-048", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+049 = { name = "typical90-049", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+050 = { name = "typical90-050", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+051 = { name = "typical90-051", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+052 = { name = "typical90-052", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+053 = { name = "typical90-053", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+054 = { name = "typical90-054", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+055 = { name = "typical90-055", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+056 = { name = "typical90-056", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+057 = { name = "typical90-057", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+058 = { name = "typical90-058", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+059 = { name = "typical90-059", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+060 = { name = "typical90-060", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+061 = { name = "typical90-061", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+062 = { name = "typical90-062", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+063 = { name = "typical90-063", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+064 = { name = "typical90-064", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+065 = { name = "typical90-065", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+066 = { name = "typical90-066", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+067 = { name = "typical90-067", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+068 = { name = "typical90-068", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+069 = { name = "typical90-069", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+070 = { name = "typical90-070", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+071 = { name = "typical90-071", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+072 = { name = "typical90-072", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+073 = { name = "typical90-073", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+074 = { name = "typical90-074", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+075 = { name = "typical90-075", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+076 = { name = "typical90-076", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+077 = { name = "typical90-077", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+078 = { name = "typical90-078", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+079 = { name = "typical90-079", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+080 = { name = "typical90-080", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+081 = { name = "typical90-081", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+082 = { name = "typical90-082", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+083 = { name = "typical90-083", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+084 = { name = "typical90-084", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+085 = { name = "typical90-085", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+086 = { name = "typical90-086", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+087 = { name = "typical90-087", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+088 = { name = "typical90-088", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+089 = { name = "typical90-089", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
+090 = { name = "typical90-090", problem = "https://atcoder.jp/contests/typical90/<FIXME: screen name of the problem>" }
 
 # dependencies added to new project
 [dependencies]
-ac-library-rs="0.1.1"
-proconio="=0.4.5"
-itertools="=0.11.0"
-itertools = "=0.9.0"
+ac-library-rs = "0.1.1"
+itertools     = "=0.11.0"
+proconio      = "=0.4.5"
 
 [profile.release]
-lto = true
+lto   = true
 panic = 'abort'
 
 [[bin]]

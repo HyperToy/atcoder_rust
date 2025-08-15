@@ -1,17 +1,17 @@
 [package]
-name = "abc302"
-version = "0.1.0"
 edition = "2018"
+name    = "abc302"
+version = "0.1.0"
 
 [package.metadata.cargo-compete.bin]
-abc302-a = { alias = "a", problem = "https://atcoder.jp/contests/abc302/tasks/abc302_a" }
-abc302-b = { alias = "b", problem = "https://atcoder.jp/contests/abc302/tasks/abc302_b" }
-abc302-c = { alias = "c", problem = "https://atcoder.jp/contests/abc302/tasks/abc302_c" }
-abc302-d = { alias = "d", problem = "https://atcoder.jp/contests/abc302/tasks/abc302_d" }
-abc302-e = { alias = "e", problem = "https://atcoder.jp/contests/abc302/tasks/abc302_e" }
+abc302-a  = { alias = "a", problem = "https://atcoder.jp/contests/abc302/tasks/abc302_a" }
+abc302-b  = { alias = "b", problem = "https://atcoder.jp/contests/abc302/tasks/abc302_b" }
+abc302-c  = { alias = "c", problem = "https://atcoder.jp/contests/abc302/tasks/abc302_c" }
+abc302-d  = { alias = "d", problem = "https://atcoder.jp/contests/abc302/tasks/abc302_d" }
+abc302-e  = { alias = "e", problem = "https://atcoder.jp/contests/abc302/tasks/abc302_e" }
 abc302-ex = { alias = "ex", problem = "https://atcoder.jp/contests/abc302/tasks/abc302_h" }
-abc302-f = { alias = "f", problem = "https://atcoder.jp/contests/abc302/tasks/abc302_f" }
-abc302-g = { alias = "g", problem = "https://atcoder.jp/contests/abc302/tasks/abc302_g" }
+abc302-f  = { alias = "f", problem = "https://atcoder.jp/contests/abc302/tasks/abc302_f" }
+abc302-g  = { alias = "g", problem = "https://atcoder.jp/contests/abc302/tasks/abc302_g" }
 
 [[bin]]
 name = "abc302-a"
@@ -46,9 +46,8 @@ name = "abc302-g"
 path = "src/bin/g.rs"
 
 [dependencies]
-ac-library-rs="0.1.1"
-proconio="=0.4.5"
-itertools="=0.11.0"=0.4.3"
-itertools = "=0.9.0"
+ac-library-rs = "0.1.1"
+itertools     = "=0.11.0"
+proconio      = "=0.4.5"
 
 [dev-dependencies]
