@@ -1,17 +1,17 @@
 [package]
-name = "abc259"
-version = "0.1.0"
 edition = "2018"
+name    = "abc259"
+version = "0.1.0"
 
 [package.metadata.cargo-compete.bin]
-abc259-a = { alias = "a", problem = "https://atcoder.jp/contests/abc259/tasks/abc259_a" }
-abc259-b = { alias = "b", problem = "https://atcoder.jp/contests/abc259/tasks/abc259_b" }
-abc259-c = { alias = "c", problem = "https://atcoder.jp/contests/abc259/tasks/abc259_c" }
-abc259-d = { alias = "d", problem = "https://atcoder.jp/contests/abc259/tasks/abc259_d" }
-abc259-e = { alias = "e", problem = "https://atcoder.jp/contests/abc259/tasks/abc259_e" }
+abc259-a  = { alias = "a", problem = "https://atcoder.jp/contests/abc259/tasks/abc259_a" }
+abc259-b  = { alias = "b", problem = "https://atcoder.jp/contests/abc259/tasks/abc259_b" }
+abc259-c  = { alias = "c", problem = "https://atcoder.jp/contests/abc259/tasks/abc259_c" }
+abc259-d  = { alias = "d", problem = "https://atcoder.jp/contests/abc259/tasks/abc259_d" }
+abc259-e  = { alias = "e", problem = "https://atcoder.jp/contests/abc259/tasks/abc259_e" }
 abc259-ex = { alias = "ex", problem = "https://atcoder.jp/contests/abc259/tasks/abc259_h" }
-abc259-f = { alias = "f", problem = "https://atcoder.jp/contests/abc259/tasks/abc259_f" }
-abc259-g = { alias = "g", problem = "https://atcoder.jp/contests/abc259/tasks/abc259_g" }
+abc259-f  = { alias = "f", problem = "https://atcoder.jp/contests/abc259/tasks/abc259_f" }
+abc259-g  = { alias = "g", problem = "https://atcoder.jp/contests/abc259/tasks/abc259_g" }
 
 [[bin]]
 name = "abc259-a"
@@ -46,8 +46,8 @@ name = "abc259-g"
 path = "src/bin/g.rs"
 
 [dependencies]
-ac-library-rs="0.1.1"
-proconio="=0.4.5"
-itertools="=0.11.0"
+ac-library-rs = "0.1.1"
+itertools     = "=0.11.0"
+proconio      = "=0.4.5"
 
 [dev-dependencies]

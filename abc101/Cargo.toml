@@ -1,26 +1,26 @@
 [package]
-name = "abc101"
-version = "0.1.0"
 edition = "2021"
+name    = "abc101"
+version = "0.1.0"
 
 [package.metadata.cargo-compete]
 config = "../compete.toml"
 
 [package.metadata.cargo-compete.bin]
-a = { name = "abc101-a", problem = "https://atcoder.jp/contests/abc101/<FIXME: screen name of the problem>"}
-"a 2" = { name = "abc101-a 2", problem = "https://atcoder.jp/contests/abc101/<FIXME: screen name of the problem>"}
-b = { name = "abc101-b", problem = "https://atcoder.jp/contests/abc101/<FIXME: screen name of the problem>"}
-c = { name = "abc101-c", problem = "https://atcoder.jp/contests/abc101/<FIXME: screen name of the problem>"}
-d = { name = "abc101-d", problem = "https://atcoder.jp/contests/abc101/<FIXME: screen name of the problem>"}
+a     = { name = "abc101-a", problem = "https://atcoder.jp/contests/abc101/<FIXME: screen name of the problem>" }
+"a 2" = { name = "abc101-a 2", problem = "https://atcoder.jp/contests/abc101/<FIXME: screen name of the problem>" }
+b     = { name = "abc101-b", problem = "https://atcoder.jp/contests/abc101/<FIXME: screen name of the problem>" }
+c     = { name = "abc101-c", problem = "https://atcoder.jp/contests/abc101/<FIXME: screen name of the problem>" }
+d     = { name = "abc101-d", problem = "https://atcoder.jp/contests/abc101/<FIXME: screen name of the problem>" }
 
 # dependencies added to new project
 [dependencies]
-ac-library-rs="0.1.1"
-proconio="=0.4.5"
-itertools="=0.11.0"
+ac-library-rs = "0.1.1"
+itertools     = "=0.11.0"
+proconio      = "=0.4.5"
 
 [profile.release]
-lto = true
+lto   = true
 panic = 'abort'
 
 [[bin]]

@@ -1,29 +1,29 @@
 [package]
-name = "abc249"
-version = "0.1.0"
 edition = "2021"
+name    = "abc249"
+version = "0.1.0"
 
 [package.metadata.cargo-compete]
 config = "../compete.toml"
 
 [package.metadata.cargo-compete.bin]
-a = { name = "abc249-a", problem = "https://atcoder.jp/contests/abc249/<FIXME: screen name of the problem>"}
-b = { name = "abc249-b", problem = "https://atcoder.jp/contests/abc249/<FIXME: screen name of the problem>"}
-c = { name = "abc249-c", problem = "https://atcoder.jp/contests/abc249/<FIXME: screen name of the problem>"}
-d = { name = "abc249-d", problem = "https://atcoder.jp/contests/abc249/<FIXME: screen name of the problem>"}
-e = { name = "abc249-e", problem = "https://atcoder.jp/contests/abc249/<FIXME: screen name of the problem>"}
-ex = { name = "abc249-ex", problem = "https://atcoder.jp/contests/abc249/<FIXME: screen name of the problem>"}
-f = { name = "abc249-f", problem = "https://atcoder.jp/contests/abc249/<FIXME: screen name of the problem>"}
-g = { name = "abc249-g", problem = "https://atcoder.jp/contests/abc249/<FIXME: screen name of the problem>"}
+a  = { name = "abc249-a", problem = "https://atcoder.jp/contests/abc249/<FIXME: screen name of the problem>" }
+b  = { name = "abc249-b", problem = "https://atcoder.jp/contests/abc249/<FIXME: screen name of the problem>" }
+c  = { name = "abc249-c", problem = "https://atcoder.jp/contests/abc249/<FIXME: screen name of the problem>" }
+d  = { name = "abc249-d", problem = "https://atcoder.jp/contests/abc249/<FIXME: screen name of the problem>" }
+e  = { name = "abc249-e", problem = "https://atcoder.jp/contests/abc249/<FIXME: screen name of the problem>" }
+ex = { name = "abc249-ex", problem = "https://atcoder.jp/contests/abc249/<FIXME: screen name of the problem>" }
+f  = { name = "abc249-f", problem = "https://atcoder.jp/contests/abc249/<FIXME: screen name of the problem>" }
+g  = { name = "abc249-g", problem = "https://atcoder.jp/contests/abc249/<FIXME: screen name of the problem>" }
 
 # dependencies added to new project
 [dependencies]
-ac-library-rs="0.1.1"
-proconio="=0.4.5"
-itertools="=0.11.0"
+ac-library-rs = "0.1.1"
+itertools     = "=0.11.0"
+proconio      = "=0.4.5"
 
 [profile.release]
-lto = true
+lto   = true
 panic = 'abort'
 
 [[bin]]

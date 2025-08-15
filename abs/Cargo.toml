@@ -1,32 +1,32 @@
 [package]
-name = "abs"
-version = "0.1.0"
 edition = "2021"
+name    = "abs"
+version = "0.1.0"
 
 [package.metadata.cargo-compete]
 config = "../compete.toml"
 
 [package.metadata.cargo-compete.bin]
-abc049c = { name = "abs-abc049c", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
-abc081a = { name = "abs-abc081a", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
-abc081b = { name = "abs-abc081b", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
-abc083b = { name = "abs-abc083b", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
-abc085b = { name = "abs-abc085b", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
-abc085c = { name = "abs-abc085c", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
-abc086a = { name = "abs-abc086a", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
-abc086c = { name = "abs-abc086c", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
-abc087b = { name = "abs-abc087b", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
-abc088b = { name = "abs-abc088b", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
-practicea = { name = "abs-practicea", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>"}
+abc049c   = { name = "abs-abc049c", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>" }
+abc081a   = { name = "abs-abc081a", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>" }
+abc081b   = { name = "abs-abc081b", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>" }
+abc083b   = { name = "abs-abc083b", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>" }
+abc085b   = { name = "abs-abc085b", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>" }
+abc085c   = { name = "abs-abc085c", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>" }
+abc086a   = { name = "abs-abc086a", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>" }
+abc086c   = { name = "abs-abc086c", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>" }
+abc087b   = { name = "abs-abc087b", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>" }
+abc088b   = { name = "abs-abc088b", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>" }
+practicea = { name = "abs-practicea", problem = "https://atcoder.jp/contests/abs/<FIXME: screen name of the problem>" }
 
 # dependencies added to new project
 [dependencies]
-ac-library-rs="0.1.1"
-proconio="=0.4.5"
-itertools="=0.11.0"0.4.3"
+ac-library-rs = "0.1.1"
+itertools     = "=0.11.0"
+proconio      = "=0.4.5"
 
 [profile.release]
-lto = true
+lto   = true
 panic = 'abort'
 
 [[bin]]

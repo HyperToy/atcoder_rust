@@ -1,27 +1,27 @@
 [package]
-name = "tenka1-2013-quala"
-version = "0.1.0"
 edition = "2021"
+name    = "tenka1-2013-quala"
+version = "0.1.0"
 
 [package.metadata.cargo-compete]
 config = "../compete.toml"
 
 [package.metadata.cargo-compete.bin]
-a = { name = "tenka1-2013-quala-a", problem = "https://atcoder.jp/contests/tenka1-2013-quala/<FIXME: screen name of the problem>"}
-"a 2" = { name = "tenka1-2013-quala-a 2", problem = "https://atcoder.jp/contests/tenka1-2013-quala/<FIXME: screen name of the problem>"}
-b = { name = "tenka1-2013-quala-b", problem = "https://atcoder.jp/contests/tenka1-2013-quala/<FIXME: screen name of the problem>"}
-c = { name = "tenka1-2013-quala-c", problem = "https://atcoder.jp/contests/tenka1-2013-quala/<FIXME: screen name of the problem>"}
-d = { name = "tenka1-2013-quala-d", problem = "https://atcoder.jp/contests/tenka1-2013-quala/<FIXME: screen name of the problem>"}
-e = { name = "tenka1-2013-quala-e", problem = "https://atcoder.jp/contests/tenka1-2013-quala/<FIXME: screen name of the problem>"}
+a     = { name = "tenka1-2013-quala-a", problem = "https://atcoder.jp/contests/tenka1-2013-quala/<FIXME: screen name of the problem>" }
+"a 2" = { name = "tenka1-2013-quala-a 2", problem = "https://atcoder.jp/contests/tenka1-2013-quala/<FIXME: screen name of the problem>" }
+b     = { name = "tenka1-2013-quala-b", problem = "https://atcoder.jp/contests/tenka1-2013-quala/<FIXME: screen name of the problem>" }
+c     = { name = "tenka1-2013-quala-c", problem = "https://atcoder.jp/contests/tenka1-2013-quala/<FIXME: screen name of the problem>" }
+d     = { name = "tenka1-2013-quala-d", problem = "https://atcoder.jp/contests/tenka1-2013-quala/<FIXME: screen name of the problem>" }
+e     = { name = "tenka1-2013-quala-e", problem = "https://atcoder.jp/contests/tenka1-2013-quala/<FIXME: screen name of the problem>" }
 
 # dependencies added to new project
 [dependencies]
-ac-library-rs="0.1.1"
-proconio="=0.4.5"
-itertools="=0.11.0"
+ac-library-rs = "0.1.1"
+itertools     = "=0.11.0"
+proconio      = "=0.4.5"
 
 [profile.release]
-lto = true
+lto   = true
 panic = 'abort'
 
 [[bin]]

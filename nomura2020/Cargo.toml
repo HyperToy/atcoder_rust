@@ -1,27 +1,27 @@
 [package]
-name = "nomura2020"
-version = "0.1.0"
 edition = "2021"
+name    = "nomura2020"
+version = "0.1.0"
 
 [package.metadata.cargo-compete]
 config = "../compete.toml"
 
 [package.metadata.cargo-compete.bin]
-a = { name = "nomura2020-a", problem = "https://atcoder.jp/contests/nomura2020/<FIXME: screen name of the problem>"}
-b = { name = "nomura2020-b", problem = "https://atcoder.jp/contests/nomura2020/<FIXME: screen name of the problem>"}
-c = { name = "nomura2020-c", problem = "https://atcoder.jp/contests/nomura2020/<FIXME: screen name of the problem>"}
-d = { name = "nomura2020-d", problem = "https://atcoder.jp/contests/nomura2020/<FIXME: screen name of the problem>"}
-e = { name = "nomura2020-e", problem = "https://atcoder.jp/contests/nomura2020/<FIXME: screen name of the problem>"}
-f = { name = "nomura2020-f", problem = "https://atcoder.jp/contests/nomura2020/<FIXME: screen name of the problem>"}
+a = { name = "nomura2020-a", problem = "https://atcoder.jp/contests/nomura2020/<FIXME: screen name of the problem>" }
+b = { name = "nomura2020-b", problem = "https://atcoder.jp/contests/nomura2020/<FIXME: screen name of the problem>" }
+c = { name = "nomura2020-c", problem = "https://atcoder.jp/contests/nomura2020/<FIXME: screen name of the problem>" }
+d = { name = "nomura2020-d", problem = "https://atcoder.jp/contests/nomura2020/<FIXME: screen name of the problem>" }
+e = { name = "nomura2020-e", problem = "https://atcoder.jp/contests/nomura2020/<FIXME: screen name of the problem>" }
+f = { name = "nomura2020-f", problem = "https://atcoder.jp/contests/nomura2020/<FIXME: screen name of the problem>" }
 
 # dependencies added to new project
 [dependencies]
-ac-library-rs="0.1.1"
-proconio="=0.4.5"
-itertools="=0.11.0"
+ac-library-rs = "0.1.1"
+itertools     = "=0.11.0"
+proconio      = "=0.4.5"
 
 [profile.release]
-lto = true
+lto   = true
 panic = 'abort'
 
 [[bin]]

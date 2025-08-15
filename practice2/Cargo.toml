@@ -1,7 +1,7 @@
 [package]
-name = "practice2"
-version = "0.1.0"
 edition = "2018"
+name    = "practice2"
+version = "0.1.0"
 
 [package.metadata.cargo-compete.bin]
 practice2-a = { alias = "a", problem = "https://atcoder.jp/contests/practice2/tasks/practice2_a" }
@@ -66,8 +66,8 @@ name = "practice2-l"
 path = "src/bin/l.rs"
 
 [dependencies]
-ac-library-rs="0.1.1"
-itertools="=0.11.0"
-proconio="=0.4.5"
+ac-library-rs = "0.1.1"
+itertools     = "=0.11.0"
+proconio      = "=0.4.5"
 
 [dev-dependencies]

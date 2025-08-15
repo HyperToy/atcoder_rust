@@ -1,7 +1,7 @@
 [package]
-name = "abc400"
-version = "0.1.0"
 edition = "2018"
+name    = "abc400"
+version = "0.1.0"
 
 [package.metadata.cargo-compete.bin]
 abc400-a = { alias = "a", problem = "https://atcoder.jp/contests/abc400/tasks/abc400_a" }
@@ -41,8 +41,8 @@ name = "abc400-g"
 path = "src/bin/g.rs"
 
 [dependencies]
-ac-library-rs="0.1.1"
-itertools="=0.11.0"
-proconio="=0.4.5"
+ac-library-rs = "0.1.1"
+itertools     = "=0.11.0"
+proconio      = "=0.4.5"
 
 [dev-dependencies]

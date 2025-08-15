@@ -1,25 +1,25 @@
 [package]
-name = "arc026"
-version = "0.1.0"
 edition = "2021"
+name    = "arc026"
+version = "0.1.0"
 
 [package.metadata.cargo-compete]
 config = "../compete.toml"
 
 [package.metadata.cargo-compete.bin]
-a = { name = "arc026-a", problem = "https://atcoder.jp/contests/arc026/<FIXME: screen name of the problem>"}
-b = { name = "arc026-b", problem = "https://atcoder.jp/contests/arc026/<FIXME: screen name of the problem>"}
-c = { name = "arc026-c", problem = "https://atcoder.jp/contests/arc026/<FIXME: screen name of the problem>"}
-d = { name = "arc026-d", problem = "https://atcoder.jp/contests/arc026/<FIXME: screen name of the problem>"}
+a = { name = "arc026-a", problem = "https://atcoder.jp/contests/arc026/<FIXME: screen name of the problem>" }
+b = { name = "arc026-b", problem = "https://atcoder.jp/contests/arc026/<FIXME: screen name of the problem>" }
+c = { name = "arc026-c", problem = "https://atcoder.jp/contests/arc026/<FIXME: screen name of the problem>" }
+d = { name = "arc026-d", problem = "https://atcoder.jp/contests/arc026/<FIXME: screen name of the problem>" }
 
 # dependencies added to new project
 [dependencies]
-ac-library-rs="0.1.1"
-proconio="=0.4.5"
-itertools="=0.11.0"
+ac-library-rs = "0.1.1"
+itertools     = "=0.11.0"
+proconio      = "=0.4.5"
 
 [profile.release]
-lto = true
+lto   = true
 panic = 'abort'
 
 [[bin]]

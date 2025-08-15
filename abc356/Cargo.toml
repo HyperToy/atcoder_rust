@@ -1,7 +1,7 @@
 [package]
-name = "abc356"
-version = "0.1.0"
 edition = "2018"
+name    = "abc356"
+version = "0.1.0"
 
 [package.metadata.cargo-compete.bin]
 abc356-a = { alias = "a", problem = "https://atcoder.jp/contests/abc356/tasks/abc356_a" }
@@ -41,8 +41,8 @@ name = "abc356-g"
 path = "src/bin/g.rs"
 
 [dependencies]
-ac-library-rs="0.1.1"
-itertools="=0.11.0"
-proconio="=0.4.5"
+ac-library-rs = "0.1.1"
+itertools     = "=0.11.0"
+proconio      = "=0.4.5"
 
 [dev-dependencies]

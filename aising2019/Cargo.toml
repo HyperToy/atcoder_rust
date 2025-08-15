@@ -1,27 +1,27 @@
 [package]
-name = "aising2019"
-version = "0.1.0"
 edition = "2021"
+name    = "aising2019"
+version = "0.1.0"
 
 [package.metadata.cargo-compete]
 config = "../compete.toml"
 
 [package.metadata.cargo-compete.bin]
-a = { name = "aising2019-a", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>"}
-b = { name = "aising2019-b", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>"}
-"b 2" = { name = "aising2019-b 2", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>"}
-c = { name = "aising2019-c", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>"}
-d = { name = "aising2019-d", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>"}
-e = { name = "aising2019-e", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>"}
+a     = { name = "aising2019-a", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>" }
+b     = { name = "aising2019-b", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>" }
+"b 2" = { name = "aising2019-b 2", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>" }
+c     = { name = "aising2019-c", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>" }
+d     = { name = "aising2019-d", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>" }
+e     = { name = "aising2019-e", problem = "https://atcoder.jp/contests/aising2019/<FIXME: screen name of the problem>" }
 
 # dependencies added to new project
 [dependencies]
-ac-library-rs="0.1.1"
-proconio="=0.4.5"
-itertools="=0.11.0"
+ac-library-rs = "0.1.1"
+itertools     = "=0.11.0"
+proconio      = "=0.4.5"
 
 [profile.release]
-lto = true
+lto   = true
 panic = 'abort'
 
 [[bin]]

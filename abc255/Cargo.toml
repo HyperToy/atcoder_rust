@@ -1,17 +1,17 @@
 [package]
-name = "abc255"
-version = "0.1.0"
 edition = "2018"
+name    = "abc255"
+version = "0.1.0"
 
 [package.metadata.cargo-compete.bin]
-abc255-a = { alias = "a", problem = "https://atcoder.jp/contests/abc255/tasks/abc255_a" }
-abc255-b = { alias = "b", problem = "https://atcoder.jp/contests/abc255/tasks/abc255_b" }
-abc255-c = { alias = "c", problem = "https://atcoder.jp/contests/abc255/tasks/abc255_c" }
-abc255-d = { alias = "d", problem = "https://atcoder.jp/contests/abc255/tasks/abc255_d" }
-abc255-e = { alias = "e", problem = "https://atcoder.jp/contests/abc255/tasks/abc255_e" }
+abc255-a  = { alias = "a", problem = "https://atcoder.jp/contests/abc255/tasks/abc255_a" }
+abc255-b  = { alias = "b", problem = "https://atcoder.jp/contests/abc255/tasks/abc255_b" }
+abc255-c  = { alias = "c", problem = "https://atcoder.jp/contests/abc255/tasks/abc255_c" }
+abc255-d  = { alias = "d", problem = "https://atcoder.jp/contests/abc255/tasks/abc255_d" }
+abc255-e  = { alias = "e", problem = "https://atcoder.jp/contests/abc255/tasks/abc255_e" }
 abc255-ex = { alias = "ex", problem = "https://atcoder.jp/contests/abc255/tasks/abc255_h" }
-abc255-f = { alias = "f", problem = "https://atcoder.jp/contests/abc255/tasks/abc255_f" }
-abc255-g = { alias = "g", problem = "https://atcoder.jp/contests/abc255/tasks/abc255_g" }
+abc255-f  = { alias = "f", problem = "https://atcoder.jp/contests/abc255/tasks/abc255_f" }
+abc255-g  = { alias = "g", problem = "https://atcoder.jp/contests/abc255/tasks/abc255_g" }
 
 [[bin]]
 name = "abc255-a"
@@ -46,8 +46,8 @@ name = "abc255-g"
 path = "src/bin/g.rs"
 
 [dependencies]
-ac-library-rs="0.1.1"
-proconio="=0.4.5"
-itertools="=0.11.0"
+ac-library-rs = "0.1.1"
+itertools     = "=0.11.0"
+proconio      = "=0.4.5"
 
 [dev-dependencies]
