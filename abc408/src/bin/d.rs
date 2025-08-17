@@ -10,16 +10,18 @@ fn main() {
 }
 
 fn solve(q: Vec<char>) -> i32 {
-    let mut dp = [Some(0), None, None];
-    for c in q {
-        let ndp = [
-            dp[0].map(|v| v + cost(c == '0')),
-            min_option(dp[0], dp[1]).map(|v| v + cost(c == '1')),
-            min_option(dp[1], dp[2]).map(|v| v + cost(c == '0')),
-        ];
-        dp = ndp;
-    }
-    dp.iter().filter_map(|&x| x).min().unwrap()
+    q.iter()
+        .fold([Some(0), None, None], |dp, &c| {
+            [
+                dp[0].map(|v| v + cost(c == '0')),
+                min_option(dp[0], dp[1]).map(|v| v + cost(c == '1')),
+                min_option(dp[1], dp[2]).map(|v| v + cost(c == '0')),
+            ]
+        })
+        .iter()
+        .filter_map(|&x| x)
+        .min()
+        .unwrap()
 }
 
 fn min_option(a: Option<i32>, b: Option<i32>) -> Option<i32> {
