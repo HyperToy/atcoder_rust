@@ -1,8 +1,9 @@
+use itertools::Itertools;
 use proconio::input;
 
 fn main() {
     input! {
-        //
+        k: usize,
     }
-    todo!();
+    println!("{}", ('A'..).take(k).join(""));
 }
