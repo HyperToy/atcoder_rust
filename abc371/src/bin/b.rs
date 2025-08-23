@@ -11,14 +11,7 @@ fn main() {
         ab.iter()
             .enumerate()
             .map(|(i, (a, b))| *b == 'M' && ab.iter().take(i).all(|(pa, pb)| pa != a || *pb == 'F'))
-            .map(yes_no)
+            .map(|b| if b { "Yes" } else { "No" })
             .join("\n")
     );
-}
-
-fn yes_no(b: bool) -> String {
-    match b {
-        true => "Yes".to_string(),
-        false => "No".to_string(),
-    }
 }
