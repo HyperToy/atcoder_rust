@@ -10,17 +10,23 @@ fn main() {
 }
 
 fn solve(m: u32) -> Vec<u32> {
-    (0..=10)
-        .rev()
-        .fold((vec![], m), |(mut v, mut m), i| {
-            let p = 3_u32.pow(i);
-            while m >= p {
-                m -= p;
-                v.push(i);
+    decompose_into_powers(m, 10)
+}
+
+fn decompose_into_powers(remaining: u32, power: u32) -> Vec<u32> {
+    match (remaining, power) {
+        (0, _) => vec![],
+        (r, p) => {
+            let current_power = 3_u32.pow(p);
+            if r < current_power {
+                decompose_into_powers(r, p - 1)
+            } else {
+                let current_powers = vec![p];
+                let remaining_powers = decompose_into_powers(r - current_power, p);
+                [current_powers, remaining_powers].concat()
             }
-            (v, m)
-        })
-        .0
+        }
+    }
 }
 
 #[cfg(test)]
@@ -29,6 +35,7 @@ mod tests {
 
     #[test]
     fn test_solve() {
+        assert_eq!(solve(1), vec![0]);
         assert_eq!(solve(6), vec![1, 1]);
         assert_eq!(solve(100), vec![4, 2, 2, 0]);
         assert_eq!(
