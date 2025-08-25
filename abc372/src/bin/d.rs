@@ -6,14 +6,20 @@ fn main() {
         n: usize,
         h: [u32; n],
     }
-    let mut stack = vec![h[n - 1]];
-    let mut answer = vec![0];
-    for i in (0..n - 1).rev() {
+    let answer = solve(&h);
+    println!("{}", answer.iter().join(" "));
+}
+
+fn solve(h: &[u32]) -> Vec<usize> {
+    let n = h.len();
+    let mut stack = vec![];
+    let mut answer = vec![];
+    for i in (0..n).rev() {
         answer.push(stack.len());
         while stack.last().is_some_and(|&x| x < h[i]) {
             stack.pop();
         }
         stack.push(h[i]);
     }
-    println!("{}", answer.iter().rev().join(" "));
+    answer.into_iter().rev().collect()
 }
