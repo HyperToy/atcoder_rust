@@ -1,0 +1,48 @@
+[package]
+name = "abc420"
+version = "0.1.0"
+edition = "2018"
+
+[package.metadata.cargo-compete.bin]
+abc420-a = { alias = "a", problem = "https://atcoder.jp/contests/abc420/tasks/abc420_a" }
+abc420-b = { alias = "b", problem = "https://atcoder.jp/contests/abc420/tasks/abc420_b" }
+abc420-c = { alias = "c", problem = "https://atcoder.jp/contests/abc420/tasks/abc420_c" }
+abc420-d = { alias = "d", problem = "https://atcoder.jp/contests/abc420/tasks/abc420_d" }
+abc420-e = { alias = "e", problem = "https://atcoder.jp/contests/abc420/tasks/abc420_e" }
+abc420-f = { alias = "f", problem = "https://atcoder.jp/contests/abc420/tasks/abc420_f" }
+abc420-g = { alias = "g", problem = "https://atcoder.jp/contests/abc420/tasks/abc420_g" }
+
+[[bin]]
+name = "abc420-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "abc420-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "abc420-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "abc420-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "abc420-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "abc420-f"
+path = "src/bin/f.rs"
+
+[[bin]]
+name = "abc420-g"
+path = "src/bin/g.rs"
+
+[dependencies]
+ac-library-rs="0.1.1"
+itertools="=0.11.0"
+proconio="=0.4.5"
+
+[dev-dependencies]
