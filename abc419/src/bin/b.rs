@@ -25,17 +25,15 @@ fn main() {
         .collect();
     let mut bag = BinaryHeap::new();
     let mut answer = vec![];
-    for q in qs {
-        match q {
-            Some(x) => {
-                bag.push(Reverse(x));
-            }
-            None => {
-                if let Some(Reverse(x)) = bag.pop() {
-                    answer.push(x);
-                }
+    qs.iter().for_each(|q| match q {
+        Some(x) => {
+            bag.push(Reverse(x));
+        }
+        None => {
+            if let Some(Reverse(x)) = bag.pop() {
+                answer.push(x);
             }
         }
-    }
+    });
     println!("{}", answer.iter().join("\n"));
 }
