@@ -6,9 +6,12 @@ fn main() {
         t: Chars,
         a: Chars,
     }
-    print_yes_no(t.iter().zip(a.iter()).any(|(t, a)| t == a && t == &'o'));
+    println!(
+        "{}",
+        yes_no(t.iter().zip(a.iter()).any(|(t, a)| t == a && t == &'o'))
+    );
 }
 
-fn print_yes_no(b: bool) {
-    println!("{}", if b { "Yes" } else { "No" });
+fn yes_no(b: bool) -> String {
+    if b { "Yes" } else { "No" }.to_string()
 }

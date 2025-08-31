@@ -6,9 +6,9 @@ fn main() {
         n: usize,
         a: [i32; n],
     }
-    print_yes_no(a.iter().tuple_windows().all(|(a, b)| a < b));
+    println!("{}", yes_no(a.iter().tuple_windows().all(|(a, b)| a < b)));
 }
 
-fn print_yes_no(b: bool) {
-    println!("{}", if b { "Yes" } else { "No" });
+fn yes_no(b: bool) -> String {
+    if b { "Yes" } else { "No" }.to_string()
 }
