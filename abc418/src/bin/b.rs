@@ -12,8 +12,7 @@ fn main() {
         .map(|(i, j)| filling_rate(&s[i..j]))
         // (a0 / a1) cmp (b0 / b1)
         .sorted_by(|&a, &b| (a.0 * b.1).cmp(&(b.0 * a.1)))
-        .rev()
-        .next()
+        .next_back()
         .map(|(x, t)| x as f64 / t as f64)
         .unwrap();
     println!("{:.9}", max_rate);
