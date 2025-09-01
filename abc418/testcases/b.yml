@@ -1,7 +1,9 @@
 ---
 type: Batch
 timelimit: ~
-match: Lines
+match:
+  Float:
+    absolute_error: 1e-9
 
 cases:
   - name: sample1
