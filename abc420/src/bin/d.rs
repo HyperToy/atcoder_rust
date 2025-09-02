@@ -39,17 +39,13 @@ fn main() {
     let dist = dijkstra(h * w * 2, graph, s);
     println!(
         "{}",
-        match dist[g] {
-            None => match dist[switch(g, (h, w))] {
-                None => "-1".to_string(),
-                Some(d) => d.to_string(),
-            },
-            Some(d) => match dist[switch(g, (h, w))] {
-                None => d.to_string(),
-                Some(e) => d.min(e).to_string(),
-            },
+        match (dist[g], dist[switch(g, (h, w))]) {
+            (None, None) => -1,
+            (None, Some(e)) => e,
+            (Some(d), None) => d,
+            (Some(d), Some(e)) => d.min(e),
         }
-    )
+    );
 }
 
 fn neighbors(pos: usize, (h, w): (usize, usize)) -> Vec<usize> {
