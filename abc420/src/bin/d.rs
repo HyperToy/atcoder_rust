@@ -60,7 +60,7 @@ fn neighbors(pos: usize, (h, w): (usize, usize)) -> Vec<usize> {
 }
 
 fn neighbors_front(pos: usize, (h, w): (usize, usize)) -> Vec<usize> {
-    let (i, j) = decode(pos, (h, w));
+    let (i, j) = (pos / w, pos % w);
     [
         (if i > 0 { Some(i - 1) } else { None }, Some(j)), // 上
         (if i < h - 1 { Some(i + 1) } else { None }, Some(j)), // 下
@@ -68,20 +68,12 @@ fn neighbors_front(pos: usize, (h, w): (usize, usize)) -> Vec<usize> {
         (Some(i), if j < w - 1 { Some(j + 1) } else { None }), // 右
     ]
     .iter()
-    .filter_map(|(ni, nj)| match (ni, nj) {
-        (Some(ni), Some(nj)) => Some((*ni, *nj)),
+    .filter_map(|(i, j)| match (i, j) {
+        (Some(i), Some(j)) => Some((*i, *j)),
         _ => None,
     })
-    .map(|(ni, nj)| encode((ni, nj), (h, w)))
+    .map(|(i, j)| i * w + j)
     .collect()
-}
-
-fn encode((i, j): (usize, usize), (_h, w): (usize, usize)) -> usize {
-    i * w + j
-}
-
-fn decode(pos: usize, (_h, w): (usize, usize)) -> (usize, usize) {
-    (pos / w, pos % w)
 }
 
 fn is_front(pos: usize, (h, w): (usize, usize)) -> bool {
