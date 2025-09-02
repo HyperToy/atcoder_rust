@@ -60,21 +60,20 @@ fn neighbors(pos: usize, (h, w): (usize, usize)) -> Vec<usize> {
 }
 
 fn neighbors_front(pos: usize, (h, w): (usize, usize)) -> Vec<usize> {
-    let mut res = vec![];
     let (i, j) = decode(pos, (h, w));
-    if i > 0 {
-        res.push((i - 1, j));
-    }
-    if i < h - 1 {
-        res.push((i + 1, j));
-    }
-    if j > 0 {
-        res.push((i, j - 1));
-    }
-    if j < w - 1 {
-        res.push((i, j + 1));
-    }
-    res.iter().map(|&(i, j)| encode((i, j), (h, w))).collect()
+    [
+        (if i > 0 { Some(i - 1) } else { None }, Some(j)), // 上
+        (if i < h - 1 { Some(i + 1) } else { None }, Some(j)), // 下
+        (Some(i), if j > 0 { Some(j - 1) } else { None }), // 左
+        (Some(i), if j < w - 1 { Some(j + 1) } else { None }), // 右
+    ]
+    .iter()
+    .filter_map(|(ni, nj)| match (ni, nj) {
+        (Some(ni), Some(nj)) => Some((*ni, *nj)),
+        _ => None,
+    })
+    .map(|(ni, nj)| encode((ni, nj), (h, w)))
+    .collect()
 }
 
 fn encode((i, j): (usize, usize), (_h, w): (usize, usize)) -> usize {
