@@ -36,7 +36,7 @@ fn main() {
     }
 
     let graph = make_graph(h * w * 2, es);
-    let dist = dijkstra(h * w * 2, graph, s);
+    let dist = dijkstra(graph, s);
     println!(
         "{}",
         match (dist[g], dist[switch(g, (h, w))]) {
@@ -49,42 +49,48 @@ fn main() {
 }
 
 fn neighbors(pos: usize, (h, w): (usize, usize)) -> Vec<usize> {
-    let mut res = vec![];
-    if pos < h * w {
-        let (i, j) = (pos / w, pos % w);
-        if i > 0 {
-            res.push(pos - w);
-        }
-        if i < h - 1 {
-            res.push(pos + w);
-        }
-        if j > 0 {
-            res.push(pos - 1);
-        }
-        if j < w - 1 {
-            res.push(pos + 1);
-        }
+    if is_front(pos, (h, w)) {
+        neighbors_front(pos, (h, w))
     } else {
-        let ipos = switch(pos, (h, w));
-        let (i, j) = (ipos / w, ipos % w);
-        if i > 0 {
-            res.push(switch(ipos - w, (h, w)));
-        }
-        if i < h - 1 {
-            res.push(switch(ipos + w, (h, w)));
-        }
-        if j > 0 {
-            res.push(switch(ipos - 1, (h, w)));
-        }
-        if j < w - 1 {
-            res.push(switch(ipos + 1, (h, w)));
-        }
+        neighbors_front(switch(pos, (h, w)), (h, w))
+            .iter()
+            .map(|&x| switch(x, (h, w)))
+            .collect()
     }
-    res
+}
+
+fn neighbors_front(pos: usize, (h, w): (usize, usize)) -> Vec<usize> {
+    let mut res = vec![];
+    let (i, j) = decode(pos, (h, w));
+    if i > 0 {
+        res.push((i - 1, j));
+    }
+    if i < h - 1 {
+        res.push((i + 1, j));
+    }
+    if j > 0 {
+        res.push((i, j - 1));
+    }
+    if j < w - 1 {
+        res.push((i, j + 1));
+    }
+    res.iter().map(|&(i, j)| encode((i, j), (h, w))).collect()
+}
+
+fn encode((i, j): (usize, usize), (_h, w): (usize, usize)) -> usize {
+    i * w + j
+}
+
+fn decode(pos: usize, (_h, w): (usize, usize)) -> (usize, usize) {
+    (pos / w, pos % w)
+}
+
+fn is_front(pos: usize, (h, w): (usize, usize)) -> bool {
+    pos < h * w
 }
 
 fn switch(pos: usize, (h, w): (usize, usize)) -> usize {
-    if pos < h * w {
+    if is_front(pos, (h, w)) {
         pos + h * w
     } else {
         pos - h * w
@@ -99,8 +105,9 @@ fn make_graph(n: usize, es: Vec<(usize, usize, i64)>) -> Vec<Vec<(usize, i64)>> 
     graph
 }
 
-fn dijkstra(n: usize, graph: Vec<Vec<(usize, i64)>>, start: usize) -> Vec<Option<i64>> {
-    let mut dist = vec![None; n * 2];
+fn dijkstra(graph: Vec<Vec<(usize, i64)>>, start: usize) -> Vec<Option<i64>> {
+    let n = graph.len();
+    let mut dist = vec![None; n];
     let mut queue = BinaryHeap::new();
     dist[start] = Some(0);
     queue.push((Reverse(dist[start]), start));
