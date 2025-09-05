@@ -19,9 +19,10 @@ fn main() {
     for i in 0..n {
         imos[i + 1] += imos[i];
     }
-    let answer = (0..n)
+    let answer = imos[0..n]
         .into_iter()
-        .map(|i| if imos[i] % 2 == 0 { s[i] } else { t[i] })
+        .zip(s.into_iter().zip(t.into_iter()))
+        .map(|(count, (s, t))| if count % 2 == 0 { s } else { t })
         .join("");
     println!("{}", answer);
 }
