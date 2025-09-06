@@ -1,8 +1,10 @@
-use proconio::input;
+use itertools::Itertools;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        //
+        n: usize, a: usize, b: usize,
+        s: Chars,
     }
-    todo!();
+    println!("{}", &s[a..n - b].iter().join(""));
 }
