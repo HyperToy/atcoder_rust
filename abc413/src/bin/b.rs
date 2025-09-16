@@ -9,10 +9,8 @@ fn main() {
     println!(
         "{}",
         s.iter()
-            .enumerate()
-            .cartesian_product(s.iter().enumerate())
-            .filter(|((i, _), (j, _))| i != j)
-            .map(|((_, s), (_, t))| format!("{}{}", s, t))
+            .permutations(2)
+            .map(|ss| format!("{}{}", ss[0], ss[1]))
             .sorted()
             .dedup()
             .count()
