@@ -7,23 +7,23 @@ fn main() {
         a: [usize; n],
         qs: [usize; q],
     }
-    let (s, max) = f(a);
+    let (s, max) = f(&a);
     let answer = qs
         .into_iter()
         .map(|q| if q > max { None } else { s[q] })
-        .map(|x| x.map(|x| x.to_string()).unwrap_or("-1".to_string()))
+        .map(to_string_or_minus_one)
         .join("\n");
     println!("{}", answer);
 }
 
-fn f(a: Vec<usize>) -> (Vec<Option<usize>>, usize) {
+fn f(a: &Vec<usize>) -> (Vec<Option<usize>>, usize) {
     let n = a.len();
     let max = *a.iter().max().unwrap();
     let mut sum = vec![0; max + 1];
     let mut count = vec![0; max + 1];
     for a in a {
-        sum[a] += a;
-        count[a] += 1;
+        sum[*a] += *a;
+        count[*a] += 1;
     }
     for i in 1..=max {
         sum[i] += sum[i - 1];
@@ -37,4 +37,11 @@ fn f(a: Vec<usize>) -> (Vec<Option<usize>>, usize) {
         )
         .collect_vec();
     (answer, max)
+}
+
+fn to_string_or_minus_one(x: Option<usize>) -> String {
+    match x {
+        Some(x) => x.to_string(),
+        None => "-1".to_string(),
+    }
 }
