@@ -7,22 +7,30 @@ fn main() {
         t: usize,
         queries: [(usize, Chars); t],
     }
-    let queries = queries
-        .into_iter()
-        .map(|(n, s)| {
-            (
-                n,
-                std::iter::once(true)
-                    .chain(s.into_iter().map(|c| match c {
-                        '0' => true,
-                        '1' => false,
-                        _ => unreachable!(),
-                    }))
-                    .collect::<Vec<_>>(),
-            )
+    println!(
+        "{}",
+        queries
+            .into_iter()
+            .map(|(n, s)| {
+                (
+                    n,
+                    std::iter::once(true).chain(convert(&s)).collect::<Vec<_>>(),
+                )
+            })
+            .map(solve)
+            .map(yes_no)
+            .join("\n")
+    );
+}
+
+fn convert(s: &Vec<char>) -> Vec<bool> {
+    s.iter()
+        .map(|&c| match c {
+            '0' => true,
+            '1' => false,
+            _ => unreachable!(),
         })
-        .collect::<Vec<_>>();
-    println!("{}", queries.into_iter().map(solve).map(yes_no).join("\n"));
+        .collect::<Vec<_>>()
 }
 
 fn solve((n, s): (usize, Vec<bool>)) -> bool {
